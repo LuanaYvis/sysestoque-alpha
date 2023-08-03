@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sysestoque_alpha.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace sysestoque_alpha
 {
     public partial class unidadedemediaforms : Form
     {
+        ICollection<UnidadeMedida> 
         public unidadedemediaforms()
         {
             InitializeComponent();
@@ -28,6 +30,11 @@ namespace sysestoque_alpha
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void teladedadosUM_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
