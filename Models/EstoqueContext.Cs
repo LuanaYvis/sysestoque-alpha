@@ -1,19 +1,52 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using sysestoque_alpha.Models.Config;
 
-namespace sysestoque_alpha.Models
-{
+namespace sysestoque_alpha.Models{
     public class EstoqueContext : DbContext {
 
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<NotaEntrada> NotaEntrada { get; set; }
 
-        //public DbSet<NotaEntrada> NotaEntradas { get; set; }
+        public DbSet<Fornecedor> Fornecedor { get; set; }
+
+        public DbSet<ItemEntrada> ItemEntrada { get; set; }
+
+        public DbSet<ItemSaida> ItemSaida { get; set; }
+        
+        public DbSet<NotaSaida> NotaSaida { get; set; }
+
+        public DbSet<Produto> Produto { get; set; } 
+
+        public DbSet<UnidadeMedida> UnidadeMedida { get; set; }
+
+        public DbSet<Categoria> Categoria { get; set; }
+
+
 
         protected override void
 
-            OnConfiguring(DbContextOptionsBuilder options){
+            OnConfiguring(DbContextOptionsBuilder options) {
 
-                options.UseMySQL("Server=127.0.0.1;port=3306;database=estoque;uid=root;password=#Root2022");
+            options.UseMySQL("Server=127.0.0.1;port=3306;database=estoque;uid=root;password=#Root2022");
+             
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+
+
+
+            new ItemNotaSaidaConfig().Configure(modelBuilder.Entity<ItemSaida>());
+
+            new ItemEntradaConfig().Configure(modelBuilder.Entity<ItemEntrada>());
+
+            new NotaSaidaConfig().Configure(modelBuilder.Entity<NotaSaida>());
+
+            new NotaEntradaConfig().Configure(modelBuilder.Entity<NotaEntrada>());
 
         }
+
+            
     }
+
+
 }

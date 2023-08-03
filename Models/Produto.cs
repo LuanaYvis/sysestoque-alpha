@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace sysestoque_alpha.Models
 {
-   public class Produto {
+    public class Produto {
+        [Key]
 
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -16,19 +18,17 @@ namespace sysestoque_alpha.Models
         public float EstoqueMedio { get; set; }
         public float EstoqueMin { get; set; }
 
+
         [ForeignKey(nameof(Categoria))]
-
         public int CategoriaId { get; set; }
-
         public Categoria Categoria { get; set; }
 
         [ForeignKey(nameof(UnidadeMedida))]
-
-        public Categoria UnidadeMedia { get; set; }
-        
         public int UnidadeMedida { get; set; }
+        public Categoria UnidadeMedia { get; set; }
 
-
+        
+   
         //notas de entrada
 
         public ICollection<ItemEntrada> ItensEntrada { get; set; } = new List<ItemEntrada>();

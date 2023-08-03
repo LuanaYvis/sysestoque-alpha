@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using sysestoque_alpha.Models.Config;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace sysestoque_alpha.Models
 {
-       public class NotaEntrada{
+    [EntityTypeConfiguration(typeof(NotaEntradaConfig))]
+    public class NotaEntrada{
         [Key]
         public int IdNotaEntrada { get; set; }
         public DateTime dataEntrada { get; set; }
@@ -27,7 +30,8 @@ namespace sysestoque_alpha.Models
 
         public ICollection<ItemEntrada> ItemEntrada { get; set;}=new List<ItemEntrada>();
 
-       
+        public ICollection<Produto> Produtos { get; set; } = new List<Produto>();
+
 
     }
 }
