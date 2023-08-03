@@ -13,10 +13,19 @@ namespace sysestoque_alpha
 {
     public partial class unidadedemediaforms : Form
     {
-        ICollection<UnidadeMedida> 
+        ICollection<UnidadeMedida> UnidadeMedida = new List<UnidadeMedida>();
+        BindingSource BindingSourceUnidadeMedida = new BindingSource();
         public unidadedemediaforms()
         {
             InitializeComponent();
+            using (var db = new EstoqueContext())
+            {
+                UnidadeMedida = db.UnidadeMedida.ToList();
+
+                BindingSourceUnidadeMedida.DataSource = UnidadeMedida;
+
+                teladedadosUM.DataSource = BindingSourceUnidadeMedida;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
