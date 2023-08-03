@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace sysestoque_alpha.Models
 {
-    internal class ItemSaida
+    public class ItemSaida
     {
         public Produto produto { get; set; } = new Produto();
         public NotaSaida NotaSaida { get; set; }
         public float quantidade { get; set; }
     }
       
-    }
-}
+  }
+

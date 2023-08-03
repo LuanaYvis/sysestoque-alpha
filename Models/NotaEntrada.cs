@@ -9,16 +9,23 @@ using System.Threading.Tasks;
 
 namespace sysestoque_alpha.Models
 {
-    internal class NotaEntrada{
+       public class NotaEntrada{
         [Key]
         public int IdNotaEntrada { get; set; }
         public DateTime dataEntrada { get; set; }
         public Fornecedor Fornecedor { get; set; } = new Fornecedor();
         public float ValorTotal { get; set; }
-        
-        public ICollection<ItemEntrada> ItemEntrada { get; set;}
+
+        //relações
+
+        [ForeignKey(nameof(Usuario))]
+        public int IdUsuarioResponsavel { get; set; }
+        public Usuario Usuario { get; set; }
 
 
+        // nota de entrada
+
+        public ICollection<ItemEntrada> ItemEntrada { get; set;}=new List<ItemEntrada>();
 
        
 
