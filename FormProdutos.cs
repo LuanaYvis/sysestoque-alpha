@@ -13,7 +13,10 @@ namespace sysestoque_alpha
 {
     public partial class FormProdutos : Form
     {
-        ICollection<Produto> Produto = new List<Produto>();
+        ICollection<Produto> ListaProduto = new List<Produto>();
+
+        Produto produto = new Produto();
+
         BindingSource BindingSourceProduto = new BindingSource();
 
         public FormProdutos()
@@ -23,30 +26,15 @@ namespace sysestoque_alpha
             using (var db = new EstoqueContext())
             {
 
-                Produto = db.Produto.ToList();
+                ListaProduto = db.Produto.ToList();
 
-                BindingSourceProduto.DataSource = Produto;
+                BindingSourceProduto.DataSource = produto;
 
-                teladedados.DataSource = BindingSourceProduto;
+                teladedadosprod.DataSource = BindingSourceProduto;
 
 
 
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -54,12 +42,38 @@ namespace sysestoque_alpha
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnExluir_Click(object sender, EventArgs e)
+        {
+
+            if (teladedadosprod.SelectedRows.Count > 0)
+            {
+
+                produto = teladedadosprod.SelectedRows[0].DataBoundItem as Produto;
+
+                BindingSourceProduto.Remove(produto);
+
+                using (var db = new EstoqueContext())
+                {
+                    db.Produto.Remove(produto);
+                    db.SaveChanges();
+
+                }
+
+            }
+
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboxcategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

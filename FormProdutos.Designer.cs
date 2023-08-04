@@ -29,48 +29,43 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            botaomenos = new Button();
-            butaomais = new Button();
             mintext = new Label();
             maxtext = new Label();
             textBox5estoquemin = new TextBox();
             textBox4estoquemax = new TextBox();
             textBox3unidade = new TextBox();
             textBox2id = new TextBox();
-            comboBox1categotia = new ComboBox();
-            textBox1name = new TextBox();
+            comboxcategoria = new ComboBox();
+            barratext = new TextBox();
             idtext = new Label();
             unidademedidatext = new Label();
             categoriatext = new Label();
             estoquetext = new Label();
             nometext = new Label();
-            teladedados = new DataGridView();
-            salvarbotao = new Button();
-            excluirbotao = new Button();
-            atualizarbotao = new Button();
-            incluirbotao = new Button();
+            teladedadosprod = new DataGridView();
             IDproduto = new DataGridViewTextBoxColumn();
             NomeProduto = new DataGridViewTextBoxColumn();
             EstoqueCat = new DataGridViewTextBoxColumn();
             EstoqueMax = new DataGridViewTextBoxColumn();
             EstoqueMin = new DataGridViewTextBoxColumn();
             UnidadedemedidaProduto = new DataGridViewTextBoxColumn();
+            btnSalvar = new Button();
+            btnExluir = new Button();
+            btnAtualizar = new Button();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)teladedados).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)teladedadosprod).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(botaomenos);
-            groupBox1.Controls.Add(butaomais);
             groupBox1.Controls.Add(mintext);
             groupBox1.Controls.Add(maxtext);
             groupBox1.Controls.Add(textBox5estoquemin);
             groupBox1.Controls.Add(textBox4estoquemax);
             groupBox1.Controls.Add(textBox3unidade);
             groupBox1.Controls.Add(textBox2id);
-            groupBox1.Controls.Add(comboBox1categotia);
-            groupBox1.Controls.Add(textBox1name);
+            groupBox1.Controls.Add(comboxcategoria);
+            groupBox1.Controls.Add(barratext);
             groupBox1.Controls.Add(idtext);
             groupBox1.Controls.Add(unidademedidatext);
             groupBox1.Controls.Add(categoriatext);
@@ -82,28 +77,6 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro do Produto";
-            // 
-            // botaomenos
-            // 
-            botaomenos.BackColor = Color.LightBlue;
-            botaomenos.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
-            botaomenos.Location = new Point(195, 158);
-            botaomenos.Name = "botaomenos";
-            botaomenos.Size = new Size(26, 22);
-            botaomenos.TabIndex = 14;
-            botaomenos.Text = "➖";
-            botaomenos.UseVisualStyleBackColor = false;
-            // 
-            // butaomais
-            // 
-            butaomais.BackColor = Color.LightBlue;
-            butaomais.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
-            butaomais.Location = new Point(84, 158);
-            butaomais.Name = "butaomais";
-            butaomais.Size = new Size(26, 22);
-            butaomais.TabIndex = 6;
-            butaomais.Text = "➕";
-            butaomais.UseVisualStyleBackColor = false;
             // 
             // mintext
             // 
@@ -151,21 +124,21 @@
             textBox2id.Size = new Size(135, 23);
             textBox2id.TabIndex = 8;
             // 
-            // comboBox1categotia
+            // comboxcategoria
             // 
-            comboBox1categotia.FormattingEnabled = true;
-            comboBox1categotia.Location = new Point(87, 95);
-            comboBox1categotia.Name = "comboBox1categotia";
-            comboBox1categotia.Size = new Size(225, 23);
-            comboBox1categotia.TabIndex = 7;
-            comboBox1categotia.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            comboxcategoria.FormattingEnabled = true;
+            comboxcategoria.Location = new Point(87, 95);
+            comboxcategoria.Name = "comboxcategoria";
+            comboxcategoria.Size = new Size(225, 23);
+            comboxcategoria.TabIndex = 7;
+            comboxcategoria.SelectedIndexChanged += comboxcategoria_SelectedIndexChanged;
             // 
-            // textBox1name
+            // barratext
             // 
-            textBox1name.Location = new Point(84, 40);
-            textBox1name.Name = "textBox1name";
-            textBox1name.Size = new Size(265, 23);
-            textBox1name.TabIndex = 6;
+            barratext.Location = new Point(84, 40);
+            barratext.Name = "barratext";
+            barratext.Size = new Size(265, 23);
+            barratext.TabIndex = 6;
             // 
             // idtext
             // 
@@ -193,7 +166,6 @@
             categoriatext.Size = new Size(61, 15);
             categoriatext.TabIndex = 3;
             categoriatext.Text = "Categoria:";
-            categoriatext.Click += label4_Click;
             // 
             // estoquetext
             // 
@@ -203,7 +175,6 @@
             estoquetext.Size = new Size(52, 15);
             estoquetext.TabIndex = 2;
             estoquetext.Text = "Estoque:";
-            estoquetext.Click += label3_Click;
             // 
             // nometext
             // 
@@ -214,56 +185,17 @@
             nometext.TabIndex = 1;
             nometext.Text = "Nome:";
             // 
-            // teladedados
+            // teladedadosprod
             // 
-            teladedados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            teladedados.BackgroundColor = Color.Snow;
-            teladedados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            teladedados.Columns.AddRange(new DataGridViewColumn[] { IDproduto, NomeProduto, EstoqueCat, EstoqueMax, EstoqueMin, UnidadedemedidaProduto });
-            teladedados.Location = new Point(12, 228);
-            teladedados.Name = "teladedados";
-            teladedados.RowTemplate.Height = 25;
-            teladedados.Size = new Size(776, 181);
-            teladedados.TabIndex = 1;
-            teladedados.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // salvarbotao
-            // 
-            salvarbotao.BackColor = Color.Transparent;
-            salvarbotao.Location = new Point(447, 415);
-            salvarbotao.Name = "salvarbotao";
-            salvarbotao.Size = new Size(75, 23);
-            salvarbotao.TabIndex = 2;
-            salvarbotao.Text = "Salvar";
-            salvarbotao.UseVisualStyleBackColor = false;
-            salvarbotao.Click += button1_Click;
-            // 
-            // excluirbotao
-            // 
-            excluirbotao.Location = new Point(528, 415);
-            excluirbotao.Name = "excluirbotao";
-            excluirbotao.Size = new Size(75, 23);
-            excluirbotao.TabIndex = 3;
-            excluirbotao.Text = "Excluir";
-            excluirbotao.UseVisualStyleBackColor = true;
-            // 
-            // atualizarbotao
-            // 
-            atualizarbotao.Location = new Point(609, 415);
-            atualizarbotao.Name = "atualizarbotao";
-            atualizarbotao.Size = new Size(75, 23);
-            atualizarbotao.TabIndex = 4;
-            atualizarbotao.Text = "Atualizar";
-            atualizarbotao.UseVisualStyleBackColor = true;
-            // 
-            // incluirbotao
-            // 
-            incluirbotao.Location = new Point(690, 415);
-            incluirbotao.Name = "incluirbotao";
-            incluirbotao.Size = new Size(75, 23);
-            incluirbotao.TabIndex = 5;
-            incluirbotao.Text = "Incluir";
-            incluirbotao.UseVisualStyleBackColor = true;
+            teladedadosprod.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            teladedadosprod.BackgroundColor = Color.Snow;
+            teladedadosprod.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            teladedadosprod.Columns.AddRange(new DataGridViewColumn[] { IDproduto, NomeProduto, EstoqueCat, EstoqueMax, EstoqueMin, UnidadedemedidaProduto });
+            teladedadosprod.Location = new Point(12, 228);
+            teladedadosprod.Name = "teladedadosprod";
+            teladedadosprod.RowTemplate.Height = 25;
+            teladedadosprod.Size = new Size(776, 181);
+            teladedadosprod.TabIndex = 1;
             // 
             // IDproduto
             // 
@@ -301,23 +233,53 @@
             UnidadedemedidaProduto.HeaderText = "Unidade de Medida";
             UnidadedemedidaProduto.Name = "UnidadedemedidaProduto";
             // 
-            // produtocs
+            // btnSalvar
+            // 
+            btnSalvar.BackColor = Color.Transparent;
+            btnSalvar.Location = new Point(500, 415);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(75, 23);
+            btnSalvar.TabIndex = 2;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // btnExluir
+            // 
+            btnExluir.Location = new Point(599, 415);
+            btnExluir.Name = "btnExluir";
+            btnExluir.Size = new Size(75, 23);
+            btnExluir.TabIndex = 3;
+            btnExluir.Text = "Excluir";
+            btnExluir.UseVisualStyleBackColor = true;
+            btnExluir.Click += btnExluir_Click;
+            // 
+            // btnAtualizar
+            // 
+            btnAtualizar.Location = new Point(692, 415);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 23);
+            btnAtualizar.TabIndex = 4;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
+            // 
+            // FormProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
-            Controls.Add(incluirbotao);
-            Controls.Add(atualizarbotao);
-            Controls.Add(excluirbotao);
-            Controls.Add(salvarbotao);
-            Controls.Add(teladedados);
+            Controls.Add(btnAtualizar);
+            Controls.Add(btnExluir);
+            Controls.Add(btnSalvar);
+            Controls.Add(teladedadosprod);
             Controls.Add(groupBox1);
-            Name = "produtocs";
+            Name = "FormProdutos";
             Text = "Produtos";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)teladedados).EndInit();
+            ((System.ComponentModel.ISupportInitialize)teladedadosprod).EndInit();
             ResumeLayout(false);
         }
 
@@ -330,20 +292,17 @@
         private Label nometext;
         private Label idtext;
         private TextBox textBox2id;
-        private ComboBox comboBox1categotia;
-        private TextBox textBox1name;
+        private ComboBox comboxcategoria;
+        private TextBox barratext;
         private Label mintext;
         private Label maxtext;
         private TextBox textBox5estoquemin;
         private TextBox textBox4estoquemax;
         private TextBox textBox3unidade;
-        private DataGridView teladedados;
-        private Button salvarbotao;
-        private Button excluirbotao;
-        private Button atualizarbotao;
-        private Button incluirbotao;
-        private Button butaomais;
-        private Button botaomenos;
+        private DataGridView teladedadosprod;
+        private Button btnSalvar;
+        private Button btnExluir;
+        private Button btnAtualizar;
         private DataGridViewTextBoxColumn IDproduto;
         private DataGridViewTextBoxColumn NomeProduto;
         private DataGridViewTextBoxColumn EstoqueCat;
