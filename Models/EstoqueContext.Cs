@@ -4,7 +4,7 @@ namespace sysestoque_alpha.Models
 {
     public class EstoqueContext : DbContext {
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         //public DbSet<NotaEntrada> NotaEntradas { get; set; }
 
