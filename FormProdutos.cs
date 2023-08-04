@@ -23,12 +23,14 @@ namespace sysestoque_alpha
         {
             InitializeComponent();
 
+            teladedadosprod.AutoGenerateColumns = false;
+
             using (var db = new EstoqueContext())
             {
 
                 ListaProduto = db.Produto.ToList();
 
-                BindingSourceProduto.DataSource = produto;
+                BindingSourceProduto.DataSource = ListaProduto;
 
                 teladedadosprod.DataSource = BindingSourceProduto;
 
@@ -44,6 +46,13 @@ namespace sysestoque_alpha
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            produto.Id = null;
+            produto.Nome = tbxNome.Text;
+            produto.UnidadeMedida = txbUM.Text;
+            produto.Categoria =
+            produto.EstoqueMax = txbmax.Text;
+            produto.EstoqueMin = txbmin.Text;
+
 
         }
 
@@ -74,6 +83,21 @@ namespace sysestoque_alpha
         }
 
         private void comboxcategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormProdutos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barratextunidade_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void unidademedidatext_Click(object sender, EventArgs e)
         {
 
         }

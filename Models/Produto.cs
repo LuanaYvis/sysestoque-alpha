@@ -11,12 +11,12 @@ namespace sysestoque_alpha.Models
     public class Produto {
         [Key]
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Nome { get; set; }
         public float Estoque { get; set; }
-        public float EstoqueMax { get; set; }
-        public float EstoqueMedio { get; set; }
-        public float EstoqueMin { get; set; }
+        public float? EstoqueMax { get; set; }
+        public float? EstoqueMedio { get; set; }
+        public float? EstoqueMin { get; set; }
 
 
         [ForeignKey(nameof(Categoria))]
@@ -24,7 +24,7 @@ namespace sysestoque_alpha.Models
         public Categoria Categoria { get; set; }
 
         [ForeignKey(nameof(UnidadeMedida))]
-        public int UnidadeMedida { get; set; }
+        public string? UnidadeMedida { get; set; }
         public Categoria UnidadeMedia { get; set; }
 
         

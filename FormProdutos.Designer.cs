@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            txbUM = new TextBox();
+            tbxNome = new TextBox();
             mintext = new Label();
             maxtext = new Label();
-            textBox5estoquemin = new TextBox();
-            textBox4estoquemax = new TextBox();
-            textBox3unidade = new TextBox();
-            textBox2id = new TextBox();
+            txbmin = new TextBox();
+            txbmax = new TextBox();
+            barratexid = new TextBox();
             comboxcategoria = new ComboBox();
-            barratext = new TextBox();
             idtext = new Label();
             unidademedidatext = new Label();
             categoriatext = new Label();
@@ -58,14 +58,14 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txbUM);
+            groupBox1.Controls.Add(tbxNome);
             groupBox1.Controls.Add(mintext);
             groupBox1.Controls.Add(maxtext);
-            groupBox1.Controls.Add(textBox5estoquemin);
-            groupBox1.Controls.Add(textBox4estoquemax);
-            groupBox1.Controls.Add(textBox3unidade);
-            groupBox1.Controls.Add(textBox2id);
+            groupBox1.Controls.Add(txbmin);
+            groupBox1.Controls.Add(txbmax);
+            groupBox1.Controls.Add(barratexid);
             groupBox1.Controls.Add(comboxcategoria);
-            groupBox1.Controls.Add(barratext);
             groupBox1.Controls.Add(idtext);
             groupBox1.Controls.Add(unidademedidatext);
             groupBox1.Controls.Add(categoriatext);
@@ -77,6 +77,20 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro do Produto";
+            // 
+            // txbUM
+            // 
+            txbUM.Location = new Point(540, 157);
+            txbUM.Name = "txbUM";
+            txbUM.Size = new Size(182, 23);
+            txbUM.TabIndex = 15;
+            // 
+            // tbxNome
+            // 
+            tbxNome.Location = new Point(70, 38);
+            tbxNome.Name = "tbxNome";
+            tbxNome.Size = new Size(240, 23);
+            tbxNome.TabIndex = 14;
             // 
             // mintext
             // 
@@ -96,33 +110,26 @@
             maxtext.TabIndex = 12;
             maxtext.Text = "Max.";
             // 
-            // textBox5estoquemin
+            // txbmin
             // 
-            textBox5estoquemin.Location = new Point(227, 157);
-            textBox5estoquemin.Name = "textBox5estoquemin";
-            textBox5estoquemin.Size = new Size(56, 23);
-            textBox5estoquemin.TabIndex = 11;
+            txbmin.Location = new Point(227, 157);
+            txbmin.Name = "txbmin";
+            txbmin.Size = new Size(56, 23);
+            txbmin.TabIndex = 11;
             // 
-            // textBox4estoquemax
+            // txbmax
             // 
-            textBox4estoquemax.Location = new Point(119, 157);
-            textBox4estoquemax.Name = "textBox4estoquemax";
-            textBox4estoquemax.Size = new Size(56, 23);
-            textBox4estoquemax.TabIndex = 10;
+            txbmax.Location = new Point(119, 157);
+            txbmax.Name = "txbmax";
+            txbmax.Size = new Size(56, 23);
+            txbmax.TabIndex = 10;
             // 
-            // textBox3unidade
+            // barratexid
             // 
-            textBox3unidade.Location = new Point(541, 154);
-            textBox3unidade.Name = "textBox3unidade";
-            textBox3unidade.Size = new Size(131, 23);
-            textBox3unidade.TabIndex = 9;
-            // 
-            // textBox2id
-            // 
-            textBox2id.Location = new Point(448, 31);
-            textBox2id.Name = "textBox2id";
-            textBox2id.Size = new Size(135, 23);
-            textBox2id.TabIndex = 8;
+            barratexid.Location = new Point(448, 31);
+            barratexid.Name = "barratexid";
+            barratexid.Size = new Size(135, 23);
+            barratexid.TabIndex = 8;
             // 
             // comboxcategoria
             // 
@@ -132,13 +139,6 @@
             comboxcategoria.Size = new Size(225, 23);
             comboxcategoria.TabIndex = 7;
             comboxcategoria.SelectedIndexChanged += comboxcategoria_SelectedIndexChanged;
-            // 
-            // barratext
-            // 
-            barratext.Location = new Point(84, 40);
-            barratext.Name = "barratext";
-            barratext.Size = new Size(265, 23);
-            barratext.TabIndex = 6;
             // 
             // idtext
             // 
@@ -154,9 +154,10 @@
             unidademedidatext.AutoSize = true;
             unidademedidatext.Location = new Point(421, 160);
             unidademedidatext.Name = "unidademedidatext";
-            unidademedidatext.Size = new Size(113, 15);
+            unidademedidatext.Size = new Size(91, 15);
             unidademedidatext.TabIndex = 4;
-            unidademedidatext.Text = "Unidade de medida:";
+            unidademedidatext.Text = "Unidademedida";
+            unidademedidatext.Click += unidademedidatext_Click;
             // 
             // categoriatext
             // 
@@ -199,7 +200,7 @@
             // 
             // IDproduto
             // 
-            IDproduto.DataPropertyName = "ID";
+            IDproduto.DataPropertyName = "Id";
             IDproduto.HeaderText = "ID";
             IDproduto.Name = "IDproduto";
             // 
@@ -277,6 +278,7 @@
             Controls.Add(groupBox1);
             Name = "FormProdutos";
             Text = "Produtos";
+            Load += FormProdutos_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)teladedadosprod).EndInit();
@@ -291,14 +293,12 @@
         private Label estoquetext;
         private Label nometext;
         private Label idtext;
-        private TextBox textBox2id;
+        private TextBox barratexid;
         private ComboBox comboxcategoria;
-        private TextBox barratext;
         private Label mintext;
         private Label maxtext;
-        private TextBox textBox5estoquemin;
-        private TextBox textBox4estoquemax;
-        private TextBox textBox3unidade;
+        private TextBox txbmin;
+        private TextBox txbmax;
         private DataGridView teladedadosprod;
         private Button btnSalvar;
         private Button btnExluir;
@@ -309,5 +309,7 @@
         private DataGridViewTextBoxColumn EstoqueMax;
         private DataGridViewTextBoxColumn EstoqueMin;
         private DataGridViewTextBoxColumn UnidadedemedidaProduto;
+        private TextBox tbxNome;
+        private TextBox txbUM;
     }
 }
