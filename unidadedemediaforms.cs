@@ -13,37 +13,55 @@ namespace sysestoque_alpha
 {
     public partial class unidadedemediaforms : Form
     {
-        ICollection<UnidadeMedida> UnidadeMedida = new List<UnidadeMedida>();
+        ICollection<UnidadeMedida> listaUnidadeMedida = new List<UnidadeMedida>();
+
+        UnidadeMedida unidademedida = new UnidadeMedida();
+       
         BindingSource BindingSourceUnidadeMedida = new BindingSource();
+
         public unidadedemediaforms()
         {
             InitializeComponent();
             using (var db = new EstoqueContext())
             {
-                UnidadeMedida = db.UnidadeMedida.ToList();
+                listaUnidadeMedida = db.UnidadeMedida.ToList();
 
-                BindingSourceUnidadeMedida.DataSource = UnidadeMedida;
+                BindingSourceUnidadeMedida.DataSource = unidademedida;
 
                 teladedadosUM.DataSource = BindingSourceUnidadeMedida;
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void teladedadosUM_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bntExcluir_Click(object sender, EventArgs e){
+
+            if(teladedadosUM.SelectedRows.Count > 0)
+            {
+                unidademedida = teladedadosUM.SelectedRows[0].DataBoundItem as UnidadeMedida;
+
+                BindingSourceUnidadeMedida.Remove(unidademedida);
+
+                using(var db = new EstoqueContext())
+                {
+                    db.UnidadeMedida.Remove(unidademedida);
+                    db.SaveChanges();
+
+                }
+            }
+
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
         {
 
         }

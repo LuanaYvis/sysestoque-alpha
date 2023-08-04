@@ -30,19 +30,18 @@
         {
             Cadastro = new GroupBox();
             textBox2 = new TextBox();
-            button4 = new Button();
-            button3 = new Button();
+            btnSalvar = new Button();
+            bntExcluir = new Button();
             comboBox1 = new ComboBox();
-            button2 = new Button();
-            button1 = new Button();
+            btnAtualizar = new Button();
             teladedadosUM = new DataGridView();
+            nomeid = new DataGridViewTextBoxColumn();
+            NOME = new DataGridViewTextBoxColumn();
+            descriçaoproduto = new DataGridViewTextBoxColumn();
             textBox1 = new TextBox();
             label2 = new Label();
             label1 = new Label();
             ID = new Label();
-            nomeid = new DataGridViewTextBoxColumn();
-            NOME = new DataGridViewTextBoxColumn();
-            descriçaoproduto = new DataGridViewTextBoxColumn();
             Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)teladedadosUM).BeginInit();
             SuspendLayout();
@@ -50,11 +49,10 @@
             // Cadastro
             // 
             Cadastro.Controls.Add(textBox2);
-            Cadastro.Controls.Add(button4);
-            Cadastro.Controls.Add(button3);
+            Cadastro.Controls.Add(btnSalvar);
+            Cadastro.Controls.Add(bntExcluir);
             Cadastro.Controls.Add(comboBox1);
-            Cadastro.Controls.Add(button2);
-            Cadastro.Controls.Add(button1);
+            Cadastro.Controls.Add(btnAtualizar);
             Cadastro.Controls.Add(teladedadosUM);
             Cadastro.Controls.Add(textBox1);
             Cadastro.Controls.Add(label2);
@@ -66,7 +64,6 @@
             Cadastro.TabIndex = 0;
             Cadastro.TabStop = false;
             Cadastro.Text = "Cadastro Unidade de Medida";
-            Cadastro.Enter += groupBox1_Enter;
             // 
             // textBox2
             // 
@@ -75,23 +72,25 @@
             textBox2.Size = new Size(139, 23);
             textBox2.TabIndex = 12;
             // 
-            // button4
+            // btnSalvar
             // 
-            button4.Location = new Point(6, 381);
-            button4.Name = "button4";
-            button4.Size = new Size(93, 26);
-            button4.TabIndex = 11;
-            button4.Text = "Salvar";
-            button4.UseVisualStyleBackColor = true;
+            btnSalvar.Location = new Point(29, 381);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(93, 26);
+            btnSalvar.TabIndex = 11;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
-            // button3
+            // bntExcluir
             // 
-            button3.Location = new Point(112, 381);
-            button3.Name = "button3";
-            button3.Size = new Size(93, 26);
-            button3.TabIndex = 10;
-            button3.Text = "Excluir";
-            button3.UseVisualStyleBackColor = true;
+            bntExcluir.Location = new Point(159, 381);
+            bntExcluir.Name = "bntExcluir";
+            bntExcluir.Size = new Size(93, 26);
+            bntExcluir.TabIndex = 10;
+            bntExcluir.Text = "Excluir";
+            bntExcluir.UseVisualStyleBackColor = true;
+            bntExcluir.Click += bntExcluir_Click;
             // 
             // comboBox1
             // 
@@ -101,24 +100,15 @@
             comboBox1.Size = new Size(159, 23);
             comboBox1.TabIndex = 9;
             // 
-            // button2
+            // btnAtualizar
             // 
-            button2.Location = new Point(315, 381);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 26);
-            button2.TabIndex = 8;
-            button2.Text = "Atualizar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(216, 381);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 26);
-            button1.TabIndex = 7;
-            button1.Text = "Incluir";
-            button1.UseVisualStyleBackColor = true;
+            btnAtualizar.Location = new Point(285, 381);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(93, 26);
+            btnAtualizar.TabIndex = 8;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // teladedadosUM
             // 
@@ -132,6 +122,24 @@
             teladedadosUM.Size = new Size(344, 385);
             teladedadosUM.TabIndex = 6;
             teladedadosUM.CellContentClick += teladedadosUM_CellContentClick;
+            // 
+            // nomeid
+            // 
+            nomeid.DataPropertyName = "id";
+            nomeid.HeaderText = "ID";
+            nomeid.Name = "nomeid";
+            // 
+            // NOME
+            // 
+            NOME.DataPropertyName = "nome";
+            NOME.HeaderText = "Nome";
+            NOME.Name = "NOME";
+            // 
+            // descriçaoproduto
+            // 
+            descriçaoproduto.DataPropertyName = "descricao";
+            descriçaoproduto.HeaderText = "Unidade de Medida";
+            descriçaoproduto.Name = "descriçaoproduto";
             // 
             // textBox1
             // 
@@ -149,7 +157,6 @@
             label2.Size = new Size(113, 15);
             label2.TabIndex = 2;
             label2.Text = "Unidade de Medida:";
-            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -170,24 +177,6 @@
             ID.Size = new Size(21, 15);
             ID.TabIndex = 0;
             ID.Text = "ID:";
-            // 
-            // nomeid
-            // 
-            nomeid.DataPropertyName = "id";
-            nomeid.HeaderText = "ID";
-            nomeid.Name = "nomeid";
-            // 
-            // NOME
-            // 
-            NOME.DataPropertyName = "nome";
-            NOME.HeaderText = "Nome";
-            NOME.Name = "NOME";
-            // 
-            // descriçaoproduto
-            // 
-            descriçaoproduto.DataPropertyName = "descricao";
-            descriçaoproduto.HeaderText = "Unidade de Medida";
-            descriçaoproduto.Name = "descriçaoproduto";
             // 
             // unidadedemediaforms
             // 
@@ -210,13 +199,12 @@
         private Label ID;
         private Label label2;
         private Label label1;
-        private Button button2;
-        private Button button1;
+        private Button btnAtualizar;
         private DataGridView teladedadosUM;
         private ComboBox comboBox1;
         private TextBox textBox2;
-        private Button button4;
-        private Button button3;
+        private Button btnSalvar;
+        private Button bntExcluir;
         private TextBox textBox1;
         private DataGridViewTextBoxColumn nomeid;
         private DataGridViewTextBoxColumn NOME;
