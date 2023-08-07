@@ -16,14 +16,14 @@ namespace sysestoque_alpha.Models
         [Key]
         public int IdNotaEntrada { get; set; }
         public DateTime dataEntrada { get; set; }
-        public Fornecedor Fornecedor { get; set; } = new Fornecedor();
+        public Fornecedor? Fornecedor { get; set; } = new Fornecedor();
         public float ValorTotal { get; set; }
 
         //relações
 
         [ForeignKey(nameof(Usuario))]
-        public int IdUsuarioResponsavel { get; set; }
-        public Usuario Usuario { get; set; }
+        public string loginUsuarioResponsavel { get; set; }
+        public Usuario? Usuario { get; set; }
 
 
         // nota de entrada
