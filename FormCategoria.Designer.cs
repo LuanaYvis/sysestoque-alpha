@@ -1,6 +1,6 @@
 ﻿namespace sysestoque_alpha
 {
-    partial class Categoria
+    partial class FormCategoria
     {
         /// <summary>
         /// Required designer variable.
@@ -31,15 +31,18 @@
             btnAtualizar = new Button();
             btnExcluir = new Button();
             btnSalvar = new Button();
-            dataGridView1 = new DataGridView();
+            dgvCategoria = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             lblID = new Label();
             lblNome = new Label();
             lblDescricao = new Label();
             groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            textBox1 = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,14 +73,38 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvCategoria
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 225);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(776, 174);
-            dataGridView1.TabIndex = 3;
+            dgvCategoria.AllowUserToResizeColumns = false;
+            dgvCategoria.AllowUserToResizeRows = false;
+            dgvCategoria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCategoria.BackgroundColor = SystemColors.InactiveCaption;
+            dgvCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCategoria.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, Column1 });
+            dgvCategoria.GridColor = SystemColors.ControlLight;
+            dgvCategoria.Location = new Point(12, 225);
+            dgvCategoria.MultiSelect = false;
+            dgvCategoria.Name = "dgvCategoria";
+            dgvCategoria.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvCategoria.RowTemplate.Height = 25;
+            dgvCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCategoria.Size = new Size(776, 174);
+            dgvCategoria.TabIndex = 3;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            // 
+            // Nome
+            // 
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Descrição";
+            Column1.Name = "Column1";
             // 
             // lblID
             // 
@@ -121,13 +148,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(81, 81);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(282, 23);
-            textBox1.TabIndex = 0;
-            // 
             // textBox2
             // 
             textBox2.Location = new Point(81, 141);
@@ -142,6 +162,13 @@
             textBox3.Size = new Size(48, 23);
             textBox3.TabIndex = 0;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(81, 81);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(282, 23);
+            textBox1.TabIndex = 0;
+            // 
             // Categoria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -149,14 +176,15 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(groupBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvCategoria);
             Controls.Add(btnSalvar);
             Controls.Add(btnExcluir);
             Controls.Add(btnAtualizar);
             ForeColor = SystemColors.ActiveCaptionText;
             Name = "Categoria";
             Text = "Categoria";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += Categoria_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvCategoria).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -167,7 +195,7 @@
         private Button btnAtualizar;
         private Button btnExcluir;
         private Button btnSalvar;
-        private DataGridView dataGridView1;
+        private DataGridView dgvCategoria;
         private Label lblID;
         private Label lblNome;
         private Label lblDescricao;
@@ -175,5 +203,8 @@
         private TextBox textBox2;
         private TextBox textBox1;
         private TextBox textBox3;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn Column1;
     }
 }
