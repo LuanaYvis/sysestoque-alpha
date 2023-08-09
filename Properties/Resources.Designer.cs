@@ -69,5 +69,25 @@ namespace sysestoque_alpha.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logotipo_Moderno_Tecnologia_e_Gaming_Roxo_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Logotipo_Moderno_Tecnologia_e_Gaming_Roxo-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wp5893510 {
+            get {
+                object obj = ResourceManager.GetObject("wp5893510", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
