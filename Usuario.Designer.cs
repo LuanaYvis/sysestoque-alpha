@@ -28,46 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnSalvar = new Button();
             dgvUsuario = new DataGridView();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btnExcluir = new Button();
+            btnAtualizar = new Button();
             groupBox1 = new GroupBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            textBox3 = new TextBox();
             textBox4 = new TextBox();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            label3 = new Label();
             textBox6 = new TextBox();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            label2 = new Label();
             label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
             groupBox2 = new GroupBox();
             txtEmail = new TextBox();
             txtNome = new TextBox();
             txtTelefone = new TextBox();
             txtSenha = new TextBox();
             txtLogin = new TextBox();
+            lblEmail = new Label();
             lblSenha = new Label();
             lblNome = new Label();
             lblTelefone = new Label();
             lblLogin = new Label();
-            lblEmail = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // btnSalvar
             // 
-            button1.Location = new Point(470, 415);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnSalvar.Location = new Point(551, 415);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(75, 23);
+            btnSalvar.TabIndex = 0;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += button1_Click;
             // 
             // dgvUsuario
             // 
@@ -78,35 +77,25 @@
             dgvUsuario.Size = new Size(776, 150);
             dgvUsuario.TabIndex = 1;
             // 
-            // button2
+            // btnExcluir
             // 
-            button2.Location = new Point(551, 415);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 0;
-            button2.Text = "button1";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button1_Click;
+            btnExcluir.Location = new Point(632, 415);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 23);
+            btnExcluir.TabIndex = 0;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += button1_Click;
             // 
-            // button3
+            // btnAtualizar
             // 
-            button3.Location = new Point(632, 415);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 0;
-            button3.Text = "button1";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button1_Click;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(713, 415);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 0;
-            button4.Text = "button1";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button1_Click;
+            btnAtualizar.Location = new Point(713, 415);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 23);
+            btnAtualizar.TabIndex = 0;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += button1_Click;
             // 
             // groupBox1
             // 
@@ -126,22 +115,19 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
-            // label1
+            // textBox4
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(33, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            label1.Click += label1_Click;
+            textBox4.Location = new Point(433, 162);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(100, 23);
+            textBox4.TabIndex = 1;
             // 
-            // textBox1
+            // textBox6
             // 
-            textBox1.Location = new Point(77, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(200, 23);
-            textBox1.TabIndex = 1;
+            textBox6.Location = new Point(77, 97);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(331, 23);
+            textBox6.TabIndex = 1;
             // 
             // textBox3
             // 
@@ -150,19 +136,19 @@
             textBox3.Size = new Size(100, 23);
             textBox3.TabIndex = 1;
             // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(433, 162);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 1;
-            // 
             // textBox2
             // 
             textBox2.Location = new Point(414, 37);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(200, 23);
             textBox2.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(77, 37);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(200, 23);
+            textBox1.TabIndex = 1;
             // 
             // label2
             // 
@@ -174,6 +160,16 @@
             label2.Text = "label1";
             label2.Click += label1_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(33, 100);
+            label4.Name = "label4";
+            label4.Size = new Size(38, 15);
+            label4.TabIndex = 0;
+            label4.Text = "label1";
+            label4.Click += label1_Click;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -184,22 +180,15 @@
             label3.Text = "label1";
             label3.Click += label1_Click;
             // 
-            // textBox6
+            // label1
             // 
-            textBox6.Location = new Point(77, 97);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(331, 23);
-            textBox6.TabIndex = 1;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(33, 100);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 0;
-            label4.Text = "label1";
-            label4.Click += label1_Click;
+            label1.AutoSize = true;
+            label1.Location = new Point(33, 40);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 0;
+            label1.Text = "label1";
+            label1.Click += label1_Click;
             // 
             // groupBox2
             // 
@@ -255,6 +244,16 @@
             txtLogin.Size = new Size(200, 23);
             txtLogin.TabIndex = 1;
             // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(370, 165);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(36, 15);
+            lblEmail.TabIndex = 0;
+            lblEmail.Text = "Email";
+            lblEmail.Click += label1_Click;
+            // 
             // lblSenha
             // 
             lblSenha.AutoSize = true;
@@ -295,16 +294,6 @@
             lblLogin.Text = "Login";
             lblLogin.Click += label1_Click;
             // 
-            // lblEmail
-            // 
-            lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(370, 165);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(36, 15);
-            lblEmail.TabIndex = 0;
-            lblEmail.Text = "Email";
-            lblEmail.Click += label1_Click;
-            // 
             // Usuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -314,10 +303,9 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(dgvUsuario);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnAtualizar);
+            Controls.Add(btnExcluir);
+            Controls.Add(btnSalvar);
             Name = "Usuario";
             Text = "Inserção de Usuário";
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
@@ -330,11 +318,11 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnSalvar;
         private DataGridView dgvUsuario;
         private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnExcluir;
+        private Button btnAtualizar;
         private GroupBox groupBox1;
         private TextBox textBox4;
         private TextBox textBox3;
