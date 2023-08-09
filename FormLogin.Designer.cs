@@ -34,11 +34,13 @@
             txbLogin = new TextBox();
             lbLogin = new Label();
             txbSenha = new TextBox();
+            gpLogin = new GroupBox();
+            gpLogin.SuspendLayout();
             SuspendLayout();
             // 
             // btnLogar
             // 
-            btnLogar.Location = new Point(587, 314);
+            btnLogar.Location = new Point(115, 285);
             btnLogar.Name = "btnLogar";
             btnLogar.Size = new Size(75, 23);
             btnLogar.TabIndex = 0;
@@ -49,7 +51,7 @@
             // lbSenha
             // 
             lbSenha.AutoSize = true;
-            lbSenha.Location = new Point(547, 194);
+            lbSenha.Location = new Point(75, 165);
             lbSenha.Name = "lbSenha";
             lbSenha.Size = new Size(39, 15);
             lbSenha.TabIndex = 1;
@@ -57,7 +59,9 @@
             // 
             // txbLogin
             // 
-            txbLogin.Location = new Point(547, 141);
+            txbLogin.BackColor = SystemColors.GradientActiveCaption;
+            txbLogin.ForeColor = SystemColors.InactiveCaptionText;
+            txbLogin.Location = new Point(75, 112);
             txbLogin.Name = "txbLogin";
             txbLogin.Size = new Size(159, 23);
             txbLogin.TabIndex = 2;
@@ -66,7 +70,7 @@
             // lbLogin
             // 
             lbLogin.AutoSize = true;
-            lbLogin.Location = new Point(547, 123);
+            lbLogin.Location = new Point(75, 94);
             lbLogin.Name = "lbLogin";
             lbLogin.Size = new Size(37, 15);
             lbLogin.TabIndex = 1;
@@ -74,26 +78,44 @@
             // 
             // txbSenha
             // 
-            txbSenha.Location = new Point(547, 212);
+            txbSenha.BackColor = SystemColors.GradientActiveCaption;
+            txbSenha.Location = new Point(75, 183);
             txbSenha.Name = "txbSenha";
             txbSenha.Size = new Size(159, 23);
             txbSenha.TabIndex = 2;
             txbSenha.TextChanged += textBox1_TextChanged;
             // 
+            // gpLogin
+            // 
+            gpLogin.Controls.Add(txbSenha);
+            gpLogin.Controls.Add(txbLogin);
+            gpLogin.Controls.Add(lbLogin);
+            gpLogin.Controls.Add(lbSenha);
+            gpLogin.Controls.Add(btnLogar);
+            gpLogin.ForeColor = SystemColors.MenuHighlight;
+            gpLogin.Location = new Point(492, 6);
+            gpLogin.Name = "gpLogin";
+            gpLogin.Size = new Size(304, 436);
+            gpLogin.TabIndex = 3;
+            gpLogin.TabStop = false;
+            gpLogin.Text = "Bem Vindo";
+            // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
+            BackgroundImage = Properties.Resources._2052277;
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(800, 450);
-            Controls.Add(txbSenha);
-            Controls.Add(txbLogin);
-            Controls.Add(lbLogin);
-            Controls.Add(lbSenha);
-            Controls.Add(btnLogar);
+            Controls.Add(gpLogin);
+            DoubleBuffered = true;
+            ForeColor = SystemColors.ActiveCaptionText;
             Name = "FormLogin";
             Text = resources.GetString("$this.Text");
+            gpLogin.ResumeLayout(false);
+            gpLogin.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -103,5 +125,6 @@
         private TextBox txbLogin;
         private Label lbLogin;
         private TextBox txbSenha;
+        private GroupBox gpLogin;
     }
 }
