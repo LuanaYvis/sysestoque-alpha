@@ -61,5 +61,28 @@ namespace sysestoque_alpha
             }
 
         }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            categoria.Id = null;
+            categoria.Nome = txtNome.Text;
+            categoria.Descricao = txtDescricao.Text;
+
+            using (var db = new EstoqueContext())
+            {
+                db.Categoria.Add(categoria);
+                db.SaveChanges();
+
+                listaCategoria = db.Categoria.ToList();
+
+                bindingSourceCategoria.DataSource = listaCategoria;
+
+                dgvCategoria.DataSource = bindingSourceCategoria;
+
+                dgvCategoria.Refresh();
+
+
+            }
+        }
     }
 }

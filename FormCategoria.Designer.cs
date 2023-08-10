@@ -32,18 +32,18 @@
             btnExcluir = new Button();
             btnSalvar = new Button();
             dgvCategoria = new DataGridView();
-            lblID = new Label();
-            lblNome = new Label();
-            lblDescricao = new Label();
-            groupBox1 = new GroupBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox1 = new TextBox();
             ID = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
+            lblID = new Label();
+            lblNome = new Label();
+            lblDescricao = new Label();
+            gpbDadosCategoria = new GroupBox();
+            txtDescricao = new TextBox();
+            txtNome = new TextBox();
+            txtID = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
-            groupBox1.SuspendLayout();
+            gpbDadosCategoria.SuspendLayout();
             SuspendLayout();
             // 
             // btnAtualizar
@@ -73,6 +73,7 @@
             btnSalvar.TabIndex = 2;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // dgvCategoria
             // 
@@ -91,6 +92,24 @@
             dgvCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCategoria.Size = new Size(776, 174);
             dgvCategoria.TabIndex = 3;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "Id";
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            // 
+            // Nome
+            // 
+            Nome.DataPropertyName = "Nome";
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "Descricao";
+            Column1.HeaderText = "Descrição";
+            Column1.Name = "Column1";
             // 
             // lblID
             // 
@@ -119,59 +138,41 @@
             lblDescricao.TabIndex = 7;
             lblDescricao.Text = "Descricão";
             // 
-            // groupBox1
+            // gpbDadosCategoria
             // 
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(lblDescricao);
-            groupBox1.Controls.Add(lblNome);
-            groupBox1.Controls.Add(lblID);
-            groupBox1.Location = new Point(12, 1);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 218);
-            groupBox1.TabIndex = 8;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            gpbDadosCategoria.Controls.Add(txtID);
+            gpbDadosCategoria.Controls.Add(txtDescricao);
+            gpbDadosCategoria.Controls.Add(txtNome);
+            gpbDadosCategoria.Controls.Add(lblDescricao);
+            gpbDadosCategoria.Controls.Add(lblNome);
+            gpbDadosCategoria.Controls.Add(lblID);
+            gpbDadosCategoria.Location = new Point(12, 1);
+            gpbDadosCategoria.Name = "gpbDadosCategoria";
+            gpbDadosCategoria.Size = new Size(776, 218);
+            gpbDadosCategoria.TabIndex = 8;
+            gpbDadosCategoria.TabStop = false;
+            gpbDadosCategoria.Text = "Dados de Categoria";
             // 
-            // textBox2
+            // txtDescricao
             // 
-            textBox2.Location = new Point(81, 141);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(145, 23);
-            textBox2.TabIndex = 0;
+            txtDescricao.Location = new Point(81, 141);
+            txtDescricao.Name = "txtDescricao";
+            txtDescricao.Size = new Size(145, 23);
+            txtDescricao.TabIndex = 0;
             // 
-            // textBox3
+            // txtNome
             // 
-            textBox3.Location = new Point(81, 30);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(48, 23);
-            textBox3.TabIndex = 0;
+            txtNome.Location = new Point(81, 81);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(282, 23);
+            txtNome.TabIndex = 0;
             // 
-            // textBox1
+            // txtID
             // 
-            textBox1.Location = new Point(81, 81);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(282, 23);
-            textBox1.TabIndex = 0;
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "Id";
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            // 
-            // Nome
-            // 
-            Nome.DataPropertyName = "Nome";
-            Nome.HeaderText = "Nome";
-            Nome.Name = "Nome";
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "Descricao";
-            Column1.HeaderText = "Descrição";
-            Column1.Name = "Column1";
+            txtID.Location = new Point(81, 30);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(36, 23);
+            txtID.TabIndex = 0;
             // 
             // FormCategoria
             // 
@@ -179,7 +180,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
-            Controls.Add(groupBox1);
+            Controls.Add(gpbDadosCategoria);
             Controls.Add(dgvCategoria);
             Controls.Add(btnSalvar);
             Controls.Add(btnExcluir);
@@ -189,8 +190,8 @@
             Text = "Categoria";
             Load += Categoria_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            gpbDadosCategoria.ResumeLayout(false);
+            gpbDadosCategoria.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -203,12 +204,12 @@
         private Label lblID;
         private Label lblNome;
         private Label lblDescricao;
-        private GroupBox groupBox1;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private TextBox textBox3;
+        private GroupBox gpbDadosCategoria;
+        private TextBox txtDescricao;
+        private TextBox txtNome;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Column1;
+        private TextBox txtID;
     }
 }
