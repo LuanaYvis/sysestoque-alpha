@@ -14,6 +14,9 @@ namespace sysestoque_alpha.Models
         public string? endereco { get; set; }
         public string? email { get; set; }
         public string? fone { get; set; }
+        public string? razaoSocial { get; set; }
+
+       
 
 
         public ICollection<Produto> Produtos {get; set;} = new List <Produto>();
