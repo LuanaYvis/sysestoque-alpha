@@ -32,9 +32,6 @@
             btnExcluir = new Button();
             btnSalvar = new Button();
             dgvCategoria = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Nome = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
             lblID = new Label();
             lblNome = new Label();
             lblDescricao = new Label();
@@ -42,6 +39,9 @@
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             textBox1 = new TextBox();
+            ID = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -63,6 +63,7 @@
             btnExcluir.TabIndex = 1;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnSalvar
             // 
@@ -90,21 +91,6 @@
             dgvCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCategoria.Size = new Size(776, 174);
             dgvCategoria.TabIndex = 3;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            // 
-            // Nome
-            // 
-            Nome.HeaderText = "Nome";
-            Nome.Name = "Nome";
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Descrição";
-            Column1.Name = "Column1";
             // 
             // lblID
             // 
@@ -169,7 +155,25 @@
             textBox1.Size = new Size(282, 23);
             textBox1.TabIndex = 0;
             // 
-            // Categoria
+            // ID
+            // 
+            ID.DataPropertyName = "Id";
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            // 
+            // Nome
+            // 
+            Nome.DataPropertyName = "Nome";
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "Descricao";
+            Column1.HeaderText = "Descrição";
+            Column1.Name = "Column1";
+            // 
+            // FormCategoria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -181,7 +185,7 @@
             Controls.Add(btnExcluir);
             Controls.Add(btnAtualizar);
             ForeColor = SystemColors.ActiveCaptionText;
-            Name = "Categoria";
+            Name = "FormCategoria";
             Text = "Categoria";
             Load += Categoria_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).EndInit();

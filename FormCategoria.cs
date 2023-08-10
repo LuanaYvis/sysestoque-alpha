@@ -9,21 +9,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sysestoque_alpha{
+namespace sysestoque_alpha
+{
     public partial class FormCategoria : Form
     {
-        ICollection<Categoria> categoria = new List<Categoria>();
+        ICollection<Categoria> listaCategoria = new List<Categoria>();
+        Categoria categoria = new Categoria();
         BindingSource bindingSourceCategoria = new BindingSource();
 
-        public FormCategoria(){
+        public FormCategoria()
+        {
 
             InitializeComponent();
 
-            using (var db = new EstoqueContext()){
+            using (var db = new EstoqueContext())
+            {
 
-                categoria = db.Categoria.ToList();
+                listaCategoria = db.Categoria.ToList();
 
-                bindingSourceCategoria.DataSource = categoria;
+                bindingSourceCategoria.DataSource = listaCategoria;
 
                 dgvCategoria.DataSource = bindingSourceCategoria;
 
@@ -32,6 +36,29 @@ namespace sysestoque_alpha{
 
         private void Categoria_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+            if (dgvCategoria.SelectedRows.Count > 0)
+            {
+
+                categoria = dgvCategoria.SelectedRows[0].DataBoundItem as Categoria;
+
+                //Remove a categoria do DataGridView
+                bindingSourceCategoria.Remove(categoria);
+
+                //Remove do Banco de Dados
+                using (var db = new EstoqueContext())
+                {
+                    db.Categoria.Remove(categoria);
+                    db.SaveChanges();
+
+                }
+
+            }
 
         }
     }
