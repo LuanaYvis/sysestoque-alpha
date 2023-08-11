@@ -11,8 +11,8 @@ using sysestoque_alpha.Models;
 namespace sysestoque_alpha.Migrations
 {
     [DbContext(typeof(EstoqueContext))]
-    [Migration("20230803043203_init")]
-    partial class init
+    [Migration("20230811030617_v100")]
+    partial class v100
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,13 +24,13 @@ namespace sysestoque_alpha.Migrations
 
             modelBuilder.Entity("FornecedorProduto", b =>
                 {
-                    b.Property<string>("FornecedorNome")
+                    b.Property<string>("Fornecedorcnpj")
                         .HasColumnType("varchar(255)");
 
                     b.Property<int>("ProdutosId")
                         .HasColumnType("int");
 
-                    b.HasKey("FornecedorNome", "ProdutosId");
+                    b.HasKey("Fornecedorcnpj", "ProdutosId");
 
                     b.HasIndex("ProdutosId");
 
@@ -39,7 +39,7 @@ namespace sysestoque_alpha.Migrations
 
             modelBuilder.Entity("sysestoque_alpha.Models.Categoria", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -56,10 +56,10 @@ namespace sysestoque_alpha.Migrations
 
             modelBuilder.Entity("sysestoque_alpha.Models.Fornecedor", b =>
                 {
-                    b.Property<string>("Nome")
+                    b.Property<string>("cnpj")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("cnpj")
+                    b.Property<string>("Nome")
                         .HasColumnType("longtext");
 
                     b.Property<string>("email")
@@ -71,7 +71,7 @@ namespace sysestoque_alpha.Migrations
                     b.Property<string>("fone")
                         .HasColumnType("longtext");
 
-                    b.HasKey("Nome");
+                    b.HasKey("cnpj");
 
                     b.ToTable("Fornecedor");
                 });
@@ -118,7 +118,7 @@ namespace sysestoque_alpha.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("FornecedorNome")
+                    b.Property<string>("Fornecedorcnpj")
                         .HasColumnType("varchar(255)");
 
                     b.Property<float>("ValorTotal")
@@ -133,7 +133,7 @@ namespace sysestoque_alpha.Migrations
 
                     b.HasKey("IdNotaEntrada");
 
-                    b.HasIndex("FornecedorNome");
+                    b.HasIndex("Fornecedorcnpj");
 
                     b.HasIndex("loginUsuarioResponsavel");
 
@@ -159,7 +159,7 @@ namespace sysestoque_alpha.Migrations
 
             modelBuilder.Entity("sysestoque_alpha.Models.Produto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -169,37 +169,34 @@ namespace sysestoque_alpha.Migrations
                     b.Property<float>("Estoque")
                         .HasColumnType("float");
 
-                    b.Property<float>("EstoqueMax")
+                    b.Property<float?>("EstoqueMax")
                         .HasColumnType("float");
 
-                    b.Property<float>("EstoqueMedio")
+                    b.Property<float?>("EstoqueMedio")
                         .HasColumnType("float");
 
-                    b.Property<float>("EstoqueMin")
+                    b.Property<float?>("EstoqueMin")
                         .HasColumnType("float");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UnidadeMediaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UnidadeMedida")
+                    b.Property<int>("UnidadeMedidaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
 
-                    b.HasIndex("UnidadeMediaId");
+                    b.HasIndex("UnidadeMedidaId");
 
                     b.ToTable("Produto");
                 });
 
             modelBuilder.Entity("sysestoque_alpha.Models.UnidadeMedida", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int?>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -251,7 +248,7 @@ namespace sysestoque_alpha.Migrations
                 {
                     b.HasOne("sysestoque_alpha.Models.Fornecedor", null)
                         .WithMany()
-                        .HasForeignKey("FornecedorNome")
+                        .HasForeignKey("Fornecedorcnpj")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -304,7 +301,7 @@ namespace sysestoque_alpha.Migrations
                 {
                     b.HasOne("sysestoque_alpha.Models.Fornecedor", "Fornecedor")
                         .WithMany("NotasEntrada")
-                        .HasForeignKey("FornecedorNome");
+                        .HasForeignKey("Fornecedorcnpj");
 
                     b.HasOne("sysestoque_alpha.Models.Usuario", "Usuario")
                         .WithMany()
@@ -325,9 +322,9 @@ namespace sysestoque_alpha.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("sysestoque_alpha.Models.Categoria", "UnidadeMedia")
+                    b.HasOne("sysestoque_alpha.Models.UnidadeMedida", "UnidadeMedia")
                         .WithMany()
-                        .HasForeignKey("UnidadeMediaId")
+                        .HasForeignKey("UnidadeMedidaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

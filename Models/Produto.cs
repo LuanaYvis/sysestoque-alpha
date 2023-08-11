@@ -21,17 +21,17 @@ namespace sysestoque_alpha.Models
 
         [ForeignKey(nameof(Categoria))]
         public int CategoriaId { get; set; }
-        public Categoria Categoria { get; set; }
+        public Categoria? Categoria { get; set; }
 
         [ForeignKey(nameof(UnidadeMedida))]
-        public string? UnidadeMedida { get; set; }
-        public Categoria UnidadeMedia { get; set; }
+        public int UnidadeMedidaId { get; set; }
+        public UnidadeMedida? UnidadeMedia { get; set; }
 
         
    
         //notas de entrada
 
-        public ICollection<ItemEntrada> ItensEntrada { get; set; } = new List<ItemEntrada>();
+        public ICollection<ItemEntrada>? ItensEntrada { get; set; } = new List<ItemEntrada>();
 
         public ICollection<NotaEntrada>? NotasEntrada { get; set; } = new List<NotaEntrada>();
 

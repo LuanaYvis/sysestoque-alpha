@@ -91,6 +91,7 @@
             tbxNome.Name = "tbxNome";
             tbxNome.Size = new Size(240, 23);
             tbxNome.TabIndex = 14;
+            tbxNome.TextChanged += tbxNome_TextChanged;
             // 
             // mintext
             // 

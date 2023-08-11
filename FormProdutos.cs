@@ -28,10 +28,10 @@ namespace sysestoque_alpha
             using (var db = new EstoqueContext())
             {
 
+
+
                 ListaProduto = db.Produto.ToList();
-
                 BindingSourceProduto.DataSource = ListaProduto;
-
                 teladedadosprod.DataSource = BindingSourceProduto;
 
 
@@ -48,12 +48,22 @@ namespace sysestoque_alpha
         {
             produto.Id = null;
             produto.Nome = tbxNome.Text;
-            produto.UnidadeMedida = txbUM.Text;
-            produto.Categoria =
-            produto.EstoqueMax = txbmax.Text;
-            produto.EstoqueMin = txbmin.Text;
+            produto.UnidadeMedidaId = 1; //Valor provisódio que deverá vir de um combobox
+            produto.CategoriaId = 1; //Valor provisódio que deverá vir de um combobox
+            produto.EstoqueMax = float.Parse(txbmax.Text);
+            produto.EstoqueMin = float.Parse(txbmin.Text);
+            produto.Estoque = 0;
 
+            using (var db = new EstoqueContext())
+            {
+                db.Produto.Add(produto);
+                db.SaveChanges();
 
+                ListaProduto = db.Produto.ToList();
+
+                BindingSourceProduto.DataSource = ListaProduto;
+
+            }
         }
 
         private void btnExluir_Click(object sender, EventArgs e)
@@ -98,6 +108,11 @@ namespace sysestoque_alpha
         }
 
         private void unidademedidatext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxNome_TextChanged(object sender, EventArgs e)
         {
 
         }
