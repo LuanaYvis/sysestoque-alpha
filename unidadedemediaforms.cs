@@ -63,15 +63,16 @@ namespace sysestoque_alpha
 
             unidademedida.nome = nomelabel.Text;
 
-            unidademedida.descricao =unidadelabel.Text;
+            unidademedida.descricao = unidadelabel.Text;
 
-            using(var db = new EstoqueContext()){ 
-           
+            using (var db = new EstoqueContext())
+            {
+
                 db.UnidadeMedida.Add(unidademedida);
-                db.SaveChanges();  
-                
+                db.SaveChanges();
+
                 listaUnidadeMedida = db.UnidadeMedida.ToList();
-                
+
                 BindingSourceUnidadeMedida.DataSource = listaUnidadeMedida;
 
                 teladedadosUM.DataSource = BindingSourceUnidadeMedida;
@@ -87,11 +88,23 @@ namespace sysestoque_alpha
 
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e) {
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+
+            if (teladedadosUM.SelectedRows.Count > 0)
+            {
+
+                unidademedida = teladedadosUM.SelectedRows[0].DataBoundItem as UnidadeMedida;
+
+                Id.Text = unidademedida.id.ToString();
+
+                nomelabel = unidademedida.Nome;
+            }
 
         }
 
-        private void label1_Click(object sender, EventArgs e){
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }

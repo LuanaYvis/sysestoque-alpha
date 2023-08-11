@@ -41,7 +41,7 @@
             textBox1 = new TextBox();
             unidadelabel = new Label();
             nomelabel = new Label();
-            ID = new Label();
+            Id = new Label();
             Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)teladedadosUM).BeginInit();
             SuspendLayout();
@@ -57,7 +57,7 @@
             Cadastro.Controls.Add(textBox1);
             Cadastro.Controls.Add(unidadelabel);
             Cadastro.Controls.Add(nomelabel);
-            Cadastro.Controls.Add(ID);
+            Cadastro.Controls.Add(Id);
             Cadastro.Location = new Point(12, 12);
             Cadastro.Name = "Cadastro";
             Cadastro.Size = new Size(776, 426);
@@ -170,15 +170,15 @@
             nomelabel.Text = "Nome:";
             nomelabel.Click += label1_Click;
             // 
-            // ID
+            // Id
             // 
-            ID.AutoSize = true;
-            ID.BackColor = Color.Transparent;
-            ID.Location = new Point(29, 73);
-            ID.Name = "ID";
-            ID.Size = new Size(21, 15);
-            ID.TabIndex = 0;
-            ID.Text = "ID:";
+            Id.AutoSize = true;
+            Id.BackColor = Color.Transparent;
+            Id.Location = new Point(29, 73);
+            Id.Name = "Id";
+            Id.Size = new Size(21, 15);
+            Id.TabIndex = 0;
+            Id.Text = "ID:";
             // 
             // unidadedemediaforms
             // 
@@ -198,7 +198,7 @@
         #endregion
 
         private GroupBox Cadastro;
-        private Label ID;
+        private Label Id;
         private Label unidadelabel;
         private Label nomelabel;
         private Button btnAtualizar;
