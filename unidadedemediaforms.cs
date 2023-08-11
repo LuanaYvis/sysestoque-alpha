@@ -16,7 +16,7 @@ namespace sysestoque_alpha
         ICollection<UnidadeMedida> listaUnidadeMedida = new List<UnidadeMedida>();
 
         UnidadeMedida unidademedida = new UnidadeMedida();
-       
+
         BindingSource BindingSourceUnidadeMedida = new BindingSource();
 
         public unidadedemediaforms()
@@ -38,15 +38,16 @@ namespace sysestoque_alpha
 
         }
 
-        private void bntExcluir_Click(object sender, EventArgs e){
+        private void bntExcluir_Click(object sender, EventArgs e)
+        {
 
-            if(teladedadosUM.SelectedRows.Count > 0)
+            if (teladedadosUM.SelectedRows.Count > 0)
             {
                 unidademedida = teladedadosUM.SelectedRows[0].DataBoundItem as UnidadeMedida;
 
                 BindingSourceUnidadeMedida.Remove(unidademedida);
 
-                using(var db = new EstoqueContext())
+                using (var db = new EstoqueContext())
                 {
                     db.UnidadeMedida.Remove(unidademedida);
                     db.SaveChanges();
@@ -58,11 +59,39 @@ namespace sysestoque_alpha
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            unidademedida.id = null;
+
+            unidademedida.nome = nomelabel.Text;
+
+            unidademedida.descricao =unidadelabel.Text;
+
+            using(var db = new EstoqueContext()){ 
+           
+                db.UnidadeMedida.Add(unidademedida);
+                db.SaveChanges();  
+                
+                listaUnidadeMedida = db.UnidadeMedida.ToList();
+                
+                BindingSourceUnidadeMedida.DataSource = listaUnidadeMedida;
+
+                teladedadosUM.DataSource = BindingSourceUnidadeMedida;
+
+                teladedadosUM.Refresh();
+
+
+            }
+
+
+
+
 
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
+        private void btnAtualizar_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e){
 
         }
     }
