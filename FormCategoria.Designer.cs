@@ -39,9 +39,9 @@
             lblNome = new Label();
             lblDescricao = new Label();
             gpbDadosCategoria = new GroupBox();
+            txtID = new TextBox();
             txtDescricao = new TextBox();
             txtNome = new TextBox();
-            txtID = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             gpbDadosCategoria.SuspendLayout();
             SuspendLayout();
@@ -54,6 +54,7 @@
             btnAtualizar.TabIndex = 0;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnExcluir
             // 
@@ -153,6 +154,13 @@
             gpbDadosCategoria.TabStop = false;
             gpbDadosCategoria.Text = "Dados de Categoria";
             // 
+            // txtID
+            // 
+            txtID.Location = new Point(81, 30);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(36, 23);
+            txtID.TabIndex = 0;
+            // 
             // txtDescricao
             // 
             txtDescricao.Location = new Point(81, 141);
@@ -166,13 +174,6 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(282, 23);
             txtNome.TabIndex = 0;
-            // 
-            // txtID
-            // 
-            txtID.Location = new Point(81, 30);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(36, 23);
-            txtID.TabIndex = 0;
             // 
             // FormCategoria
             // 

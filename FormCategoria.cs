@@ -14,9 +14,11 @@ namespace sysestoque_alpha
     public partial class FormCategoria : Form
     {
         ICollection<Categoria> listaCategoria = new List<Categoria>();
-        Categoria categoria = new Categoria();
         BindingSource bindingSourceCategoria = new BindingSource();
 
+        Categoria categoria = new Categoria();
+
+        private bool EstaAtualizando = false;
         public FormCategoria()
         {
 
@@ -82,6 +84,20 @@ namespace sysestoque_alpha
                 dgvCategoria.Refresh();
 
 
+            }
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            if (dgvCategoria.SelectedRows.Count > 0)
+            {
+                categoria = dgvCategoria.SelectedRows[0].DataBoundItem as Categoria;
+
+                txtID.Text = categoria.Id.ToString();
+                txtNome.Text = categoria.Nome;
+                txtDescricao.Text = categoria.Descricao;
+
+                EstaAtualizando = true;
             }
         }
     }
