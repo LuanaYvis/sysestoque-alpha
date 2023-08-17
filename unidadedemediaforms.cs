@@ -19,11 +19,23 @@ namespace sysestoque_alpha
 
         BindingSource BindingSourceUnidadeMedida = new BindingSource();
 
+        private bool EstaAtualizando = false;
+
         public unidadedemediaforms()
         {
             InitializeComponent();
             using (var db = new EstoqueContext())
             {
+
+
+                cbxcatUM.DataSource = db.UnidadeMedida.ToList();
+                cbxcatUM.DisplayMember = "Unidade de Medida";
+                cbxcatUM.ValueMember = "id";
+                cbxcatUM.SelectedIndex = -1;
+
+
+
+
                 listaUnidadeMedida = db.UnidadeMedida.ToList();
 
                 BindingSourceUnidadeMedida.DataSource = unidademedida;
@@ -61,9 +73,9 @@ namespace sysestoque_alpha
         {
             unidademedida.id = null;
 
-            unidademedida.nome = nomelabel.Text;
+            unidademedida.nome = lblnome.Text;
 
-            unidademedida.descricao = unidadelabel.Text;
+            unidademedida.descricao = lblUM.Text;
 
             using (var db = new EstoqueContext())
             {
@@ -82,10 +94,6 @@ namespace sysestoque_alpha
 
             }
 
-
-
-
-
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -98,7 +106,10 @@ namespace sysestoque_alpha
 
                 Id.Text = unidademedida.id.ToString();
 
-                nomelabel = unidademedida.Nome;
+                lblnome.Text = unidademedida.nome;
+
+                EstaAtualizando = true;
+
             }
 
         }

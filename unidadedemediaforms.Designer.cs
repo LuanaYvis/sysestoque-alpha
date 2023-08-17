@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             Cadastro = new GroupBox();
-            textBox2 = new TextBox();
+            txtnome = new TextBox();
             btnSalvar = new Button();
             bntExcluir = new Button();
-            comboBox1 = new ComboBox();
+            cbxcatUM = new ComboBox();
             btnAtualizar = new Button();
             teladedadosUM = new DataGridView();
             nomeid = new DataGridViewTextBoxColumn();
             NOME = new DataGridViewTextBoxColumn();
             descriçaoproduto = new DataGridViewTextBoxColumn();
-            textBox1 = new TextBox();
-            unidadelabel = new Label();
-            nomelabel = new Label();
+            txtid = new TextBox();
+            lblUM = new Label();
+            lblnome = new Label();
             Id = new Label();
             Cadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)teladedadosUM).BeginInit();
@@ -48,15 +48,15 @@
             // 
             // Cadastro
             // 
-            Cadastro.Controls.Add(textBox2);
+            Cadastro.Controls.Add(txtnome);
             Cadastro.Controls.Add(btnSalvar);
             Cadastro.Controls.Add(bntExcluir);
-            Cadastro.Controls.Add(comboBox1);
+            Cadastro.Controls.Add(cbxcatUM);
             Cadastro.Controls.Add(btnAtualizar);
             Cadastro.Controls.Add(teladedadosUM);
-            Cadastro.Controls.Add(textBox1);
-            Cadastro.Controls.Add(unidadelabel);
-            Cadastro.Controls.Add(nomelabel);
+            Cadastro.Controls.Add(txtid);
+            Cadastro.Controls.Add(lblUM);
+            Cadastro.Controls.Add(lblnome);
             Cadastro.Controls.Add(Id);
             Cadastro.Location = new Point(12, 12);
             Cadastro.Name = "Cadastro";
@@ -65,13 +65,12 @@
             Cadastro.TabStop = false;
             Cadastro.Text = "Cadastro Unidade de Medida";
             // 
-            // textBox2
+            // txtnome
             // 
-            textBox2.Location = new Point(88, 151);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(139, 23);
-            textBox2.TabIndex = 12;
-            textBox2.TextChanged += btnSalvar_Click;
+            txtnome.Location = new Point(88, 151);
+            txtnome.Name = "txtnome";
+            txtnome.Size = new Size(139, 23);
+            txtnome.TabIndex = 12;
             // 
             // btnSalvar
             // 
@@ -93,13 +92,13 @@
             bntExcluir.UseVisualStyleBackColor = true;
             bntExcluir.Click += bntExcluir_Click;
             // 
-            // comboBox1
+            // cbxcatUM
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(148, 229);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(159, 23);
-            comboBox1.TabIndex = 9;
+            cbxcatUM.FormattingEnabled = true;
+            cbxcatUM.Location = new Point(148, 229);
+            cbxcatUM.Name = "cbxcatUM";
+            cbxcatUM.Size = new Size(159, 23);
+            cbxcatUM.TabIndex = 9;
             // 
             // btnAtualizar
             // 
@@ -142,33 +141,32 @@
             descriçaoproduto.HeaderText = "Unidade de Medida";
             descriçaoproduto.Name = "descriçaoproduto";
             // 
-            // textBox1
+            // txtid
             // 
-            textBox1.Location = new Point(56, 70);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(139, 23);
-            textBox1.TabIndex = 3;
+            txtid.Location = new Point(56, 70);
+            txtid.Name = "txtid";
+            txtid.Size = new Size(139, 23);
+            txtid.TabIndex = 3;
             // 
-            // unidadelabel
+            // lblUM
             // 
-            unidadelabel.AutoSize = true;
-            unidadelabel.BackColor = Color.Transparent;
-            unidadelabel.Location = new Point(29, 232);
-            unidadelabel.Name = "unidadelabel";
-            unidadelabel.Size = new Size(113, 15);
-            unidadelabel.TabIndex = 2;
-            unidadelabel.Text = "Unidade de Medida:";
+            lblUM.AutoSize = true;
+            lblUM.BackColor = Color.Transparent;
+            lblUM.Location = new Point(29, 232);
+            lblUM.Name = "lblUM";
+            lblUM.Size = new Size(113, 15);
+            lblUM.TabIndex = 2;
+            lblUM.Text = "Unidade de Medida:";
             // 
-            // nomelabel
+            // lblnome
             // 
-            nomelabel.AutoSize = true;
-            nomelabel.BackColor = Color.Transparent;
-            nomelabel.Location = new Point(29, 154);
-            nomelabel.Name = "nomelabel";
-            nomelabel.Size = new Size(43, 15);
-            nomelabel.TabIndex = 1;
-            nomelabel.Text = "Nome:";
-            nomelabel.Click += label1_Click;
+            lblnome.AutoSize = true;
+            lblnome.BackColor = Color.Transparent;
+            lblnome.Location = new Point(29, 154);
+            lblnome.Name = "lblnome";
+            lblnome.Size = new Size(40, 15);
+            lblnome.TabIndex = 1;
+            lblnome.Text = "Nome";
             // 
             // Id
             // 
@@ -199,15 +197,15 @@
 
         private GroupBox Cadastro;
         private Label Id;
-        private Label unidadelabel;
-        private Label nomelabel;
+        private Label lblUM;
+        private Label lblnome;
         private Button btnAtualizar;
         private DataGridView teladedadosUM;
-        private ComboBox comboBox1;
-        private TextBox textBox2;
+        private ComboBox cbxcatUM;
+        private TextBox txtnome;
         private Button btnSalvar;
         private Button bntExcluir;
-        private TextBox textBox1;
+        private TextBox txtid;
         private DataGridViewTextBoxColumn nomeid;
         private DataGridViewTextBoxColumn NOME;
         private DataGridViewTextBoxColumn descriçaoproduto;
