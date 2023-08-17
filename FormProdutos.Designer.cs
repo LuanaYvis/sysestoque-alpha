@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            txbUM = new TextBox();
             tbxNome = new TextBox();
             mintext = new Label();
             maxtext = new Label();
             txbmin = new TextBox();
             txbmax = new TextBox();
             barratexid = new TextBox();
-            comboxcategoria = new ComboBox();
+            cbxcat = new ComboBox();
             idtext = new Label();
             unidademedidatext = new Label();
             categoriatext = new Label();
@@ -52,20 +51,21 @@
             btnSalvar = new Button();
             btnExluir = new Button();
             btnAtualizar = new Button();
+            cbxUM = new ComboBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)teladedadosprod).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txbUM);
+            groupBox1.Controls.Add(cbxUM);
             groupBox1.Controls.Add(tbxNome);
             groupBox1.Controls.Add(mintext);
             groupBox1.Controls.Add(maxtext);
             groupBox1.Controls.Add(txbmin);
             groupBox1.Controls.Add(txbmax);
             groupBox1.Controls.Add(barratexid);
-            groupBox1.Controls.Add(comboxcategoria);
+            groupBox1.Controls.Add(cbxcat);
             groupBox1.Controls.Add(idtext);
             groupBox1.Controls.Add(unidademedidatext);
             groupBox1.Controls.Add(categoriatext);
@@ -77,13 +77,6 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro do Produto";
-            // 
-            // txbUM
-            // 
-            txbUM.Location = new Point(540, 157);
-            txbUM.Name = "txbUM";
-            txbUM.Size = new Size(182, 23);
-            txbUM.TabIndex = 15;
             // 
             // tbxNome
             // 
@@ -132,14 +125,13 @@
             barratexid.Size = new Size(135, 23);
             barratexid.TabIndex = 8;
             // 
-            // comboxcategoria
+            // cbxcat
             // 
-            comboxcategoria.FormattingEnabled = true;
-            comboxcategoria.Location = new Point(87, 95);
-            comboxcategoria.Name = "comboxcategoria";
-            comboxcategoria.Size = new Size(225, 23);
-            comboxcategoria.TabIndex = 7;
-            comboxcategoria.SelectedIndexChanged += comboxcategoria_SelectedIndexChanged;
+            cbxcat.FormattingEnabled = true;
+            cbxcat.Location = new Point(87, 95);
+            cbxcat.Name = "cbxcat";
+            cbxcat.Size = new Size(225, 23);
+            cbxcat.TabIndex = 7;
             // 
             // idtext
             // 
@@ -155,9 +147,9 @@
             unidademedidatext.AutoSize = true;
             unidademedidatext.Location = new Point(421, 160);
             unidademedidatext.Name = "unidademedidatext";
-            unidademedidatext.Size = new Size(91, 15);
+            unidademedidatext.Size = new Size(110, 15);
             unidademedidatext.TabIndex = 4;
-            unidademedidatext.Text = "Unidademedida";
+            unidademedidatext.Text = "Unidade de medida";
             unidademedidatext.Click += unidademedidatext_Click;
             // 
             // categoriatext
@@ -266,6 +258,14 @@
             btnAtualizar.UseVisualStyleBackColor = true;
             btnAtualizar.Click += btnAtualizar_Click;
             // 
+            // cbxUM
+            // 
+            cbxUM.FormattingEnabled = true;
+            cbxUM.Location = new Point(537, 157);
+            cbxUM.Name = "cbxUM";
+            cbxUM.Size = new Size(156, 23);
+            cbxUM.TabIndex = 15;
+            // 
             // FormProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -295,7 +295,7 @@
         private Label nometext;
         private Label idtext;
         private TextBox barratexid;
-        private ComboBox comboxcategoria;
+        private ComboBox cbxcat;
         private Label mintext;
         private Label maxtext;
         private TextBox txbmin;
@@ -311,6 +311,6 @@
         private DataGridViewTextBoxColumn EstoqueMin;
         private DataGridViewTextBoxColumn UnidadedemedidaProduto;
         private TextBox tbxNome;
-        private TextBox txbUM;
+        private ComboBox cbxUM;
     }
 }

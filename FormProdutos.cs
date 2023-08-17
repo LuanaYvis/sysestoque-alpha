@@ -23,12 +23,27 @@ namespace sysestoque_alpha
         {
             InitializeComponent();
 
+
             teladedadosprod.AutoGenerateColumns = false;
 
-            using (var db = new EstoqueContext())
-            {
+            using (var db = new EstoqueContext()){
 
 
+                //combo box 
+
+                cbxcat.DataSource = db.Categoria.ToList();
+                cbxcat.DisplayMember = "Categoria";
+                cbxcat.ValueMember = "Id";
+                cbxcat.SelectedIndex = -1;
+
+
+                cbxUM.DataSource = db.UnidadeMedida.ToList();
+                cbxUM.DisplayMember = "Unidade de Medida";
+                cbxUM.ValueMember = "id";
+                cbxUM.SelectedIndex = -1;
+
+
+                //Lista de Produtos
 
                 ListaProduto = db.Produto.ToList();
                 BindingSourceProduto.DataSource = ListaProduto;
@@ -88,11 +103,6 @@ namespace sysestoque_alpha
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboxcategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
