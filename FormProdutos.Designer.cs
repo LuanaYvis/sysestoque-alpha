@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            cbxUM = new ComboBox();
             tbxNome = new TextBox();
             mintext = new Label();
             maxtext = new Label();
@@ -51,7 +52,6 @@
             btnSalvar = new Button();
             btnExluir = new Button();
             btnAtualizar = new Button();
-            cbxUM = new ComboBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)teladedadosprod).BeginInit();
             SuspendLayout();
@@ -77,6 +77,14 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro do Produto";
+            // 
+            // cbxUM
+            // 
+            cbxUM.FormattingEnabled = true;
+            cbxUM.Location = new Point(537, 157);
+            cbxUM.Name = "cbxUM";
+            cbxUM.Size = new Size(156, 23);
+            cbxUM.TabIndex = 15;
             // 
             // tbxNome
             // 
@@ -257,14 +265,6 @@
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
             btnAtualizar.Click += btnAtualizar_Click;
-            // 
-            // cbxUM
-            // 
-            cbxUM.FormattingEnabled = true;
-            cbxUM.Location = new Point(537, 157);
-            cbxUM.Name = "cbxUM";
-            cbxUM.Size = new Size(156, 23);
-            cbxUM.TabIndex = 15;
             // 
             // FormProdutos
             // 

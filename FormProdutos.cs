@@ -26,7 +26,8 @@ namespace sysestoque_alpha
 
             teladedadosprod.AutoGenerateColumns = false;
 
-            using (var db = new EstoqueContext()){
+            using (var db = new EstoqueContext())
+            {
 
 
                 //combo box 
@@ -123,6 +124,11 @@ namespace sysestoque_alpha
         }
 
         private void tbxNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxUM_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
