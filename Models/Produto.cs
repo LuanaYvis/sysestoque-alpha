@@ -21,11 +21,11 @@ namespace sysestoque_alpha.Models
 
         [ForeignKey(nameof(Categoria))]
         public int CategoriaId { get; set; }
-        public Categoria Categoria { get; set; }
+        public Categoria?    Categoria { get; set; }
 
         [ForeignKey(nameof(UnidadeMedida))]
         public int UnidadeMedida { get; set; }
-        public Categoria UnidadeMedia { get; set; }
+        public UnidadeMedida? UnidadeMedia { get; set; }
 
         
    

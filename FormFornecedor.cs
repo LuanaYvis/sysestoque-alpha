@@ -23,6 +23,8 @@ namespace sysestoque_alpha
         Fornecedor fornecedor = new Fornecedor();
         BindingSource BindingSourceFornecedor = new BindingSource();
 
+        private bool EstaAtualizando = false;
+
 
         public FormFornecedor()
         {
@@ -86,24 +88,68 @@ namespace sysestoque_alpha
 
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
+            if (EstaAtualizando)
+            {
+                fornecedor.cnpj = textCNPJ.Text;
+                fornecedor.Nome = textnome.Text;
+                fornecedor.endereco = textendereco.Text;
+                fornecedor.fone = textfone.Text;
+                fornecedor.email = textemail.Text;
 
-            fornecedor.cnpj = null;
-            fornecedor.Nome = textnome.Text;
-            fornecedor.endereco = textendereco.Text;
-            fornecedor.fone = textfone.Text;
-            fornecedor.email = textemail.Text;
+                using (var db = new EstoqueContext())
+                {
+                    db.Fornecedor.Update(fornecedor);
+                    db.SaveChanges();
 
-            using (var db = new EstoqueContext()){
-                db.Fornecedor.Add(fornecedor);
-                db.SaveChanges();
+                    listaFornecedores = db.Fornecedor.ToList();
+                    BindingSourceFornecedor.DataSource = listaFornecedores;
 
-                listaFornecedores = db.Fornecedor.ToList();
-                BindingSourceFornecedor.DataSource=listaFornecedores;
-                dgvFornecedor.DataSource = listaFornecedores;
+                    dgvFornecedor.DataSource = BindingSourceFornecedor;
 
+                    dgvFornecedor.Refresh();
+
+                }
+
+
+            }
+            else
+            {
+                fornecedor.cnpj = textCNPJ.Text;
+                fornecedor.Nome = textnome.Text;
+                fornecedor.endereco = textendereco.Text;
+                fornecedor.fone = textfone.Text;
+                fornecedor.email = textemail.Text;
+
+                using (var db = new EstoqueContext())
+                {
+
+                    db.Fornecedor.Add(fornecedor);
+                    db.SaveChanges();
+
+                    listaFornecedores = db.Fornecedor.ToList();
+                    BindingSourceFornecedor.DataSource = listaFornecedores;
+
+                    dgvFornecedor.DataSource = BindingSourceFornecedor;
+
+                    dgvFornecedor.Refresh();
+
+                }
             }
         }
 
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            fornecedor = dgvFornecedor.SelectedRows[0].DataBoundItem as Fornecedor;
+
+            textCNPJ.Text = fornecedor.cnpj;
+            textnome.Text = fornecedor.Nome;
+            textendereco.Text = fornecedor.endereco;
+            textfone.Text = fornecedor.fone;
+            textemail.Text = fornecedor.email;
+
+            EstaAtualizando = true;
+        }
     }
 }
 

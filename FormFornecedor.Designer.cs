@@ -33,7 +33,7 @@
             label2 = new Label();
             label3 = new Label();
             textendereco = new TextBox();
-            textcnpj = new TextBox();
+            textCNPJ = new TextBox();
             label4 = new Label();
             textfone = new TextBox();
             textemail = new TextBox();
@@ -51,7 +51,7 @@
             Fone = new DataGridViewTextBoxColumn();
             Endereco = new DataGridViewTextBoxColumn();
             CNPJ = new DataGridViewTextBoxColumn();
-            button1 = new Button();
+            btnAtualizar = new Button();
             btn_Excluir = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -104,12 +104,12 @@
             textendereco.Size = new Size(449, 23);
             textendereco.TabIndex = 5;
             // 
-            // textcnpj
+            // textCNPJ
             // 
-            textcnpj.Location = new Point(97, 73);
-            textcnpj.Name = "textcnpj";
-            textcnpj.Size = new Size(139, 23);
-            textcnpj.TabIndex = 6;
+            textCNPJ.Location = new Point(97, 73);
+            textCNPJ.Name = "textCNPJ";
+            textCNPJ.Size = new Size(139, 23);
+            textCNPJ.TabIndex = 6;
             // 
             // label4
             // 
@@ -167,7 +167,7 @@
             groupBox1.Controls.Add(textemail);
             groupBox1.Controls.Add(textfone);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textcnpj);
+            groupBox1.Controls.Add(textCNPJ);
             groupBox1.Controls.Add(textendereco);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(textnome);
@@ -194,6 +194,7 @@
             // 
             // btn_Salvar
             // 
+            btn_Salvar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Salvar.Location = new Point(539, 211);
             btn_Salvar.Name = "btn_Salvar";
             btn_Salvar.Size = new Size(75, 23);
@@ -240,9 +241,10 @@
             dgvFornecedor.BackgroundColor = Color.Snow;
             dgvFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFornecedor.Columns.AddRange(new DataGridViewColumn[] { Nome, Email, Fone, Endereco, CNPJ });
-            dgvFornecedor.Location = new Point(12, 268);
+            dgvFornecedor.Location = new Point(12, 269);
             dgvFornecedor.Name = "dgvFornecedor";
             dgvFornecedor.RowTemplate.Height = 25;
+            dgvFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFornecedor.Size = new Size(643, 141);
             dgvFornecedor.TabIndex = 13;
             dgvFornecedor.CellContentClick += dataGridView1_CellContentClick;
@@ -267,7 +269,7 @@
             // 
             // Endereco
             // 
-            Endereco.DataPropertyName = "endreco";
+            Endereco.DataPropertyName = "endereco";
             Endereco.HeaderText = "Endereço";
             Endereco.Name = "Endereco";
             // 
@@ -277,18 +279,20 @@
             CNPJ.HeaderText = "CNPJ";
             CNPJ.Name = "CNPJ";
             // 
-            // button1
+            // btnAtualizar
             // 
-            button1.Location = new Point(433, 416);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 14;
-            button1.Text = "Atualizar";
-            button1.UseVisualStyleBackColor = true;
+            btnAtualizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAtualizar.Location = new Point(433, 416);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 23);
+            btnAtualizar.TabIndex = 14;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btn_Excluir
             // 
-            btn_Excluir.Location = new Point(551, 415);
+            btn_Excluir.Location = new Point(551, 416);
             btn_Excluir.Name = "btn_Excluir";
             btn_Excluir.Size = new Size(75, 23);
             btn_Excluir.TabIndex = 17;
@@ -301,9 +305,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(657, 451);
+            ClientSize = new Size(663, 455);
             Controls.Add(btn_Excluir);
-            Controls.Add(button1);
+            Controls.Add(btnAtualizar);
             Controls.Add(dgvFornecedor);
             Controls.Add(groupBox1);
             Name = "FormFornecedor";
@@ -326,7 +330,7 @@
         private Label label2;
         private Label label3;
         private TextBox textendereco;
-        private TextBox textcnpj;
+        private TextBox textCNPJ;
         private Label label4;
         private TextBox textfone;
         private TextBox textemail;
@@ -338,7 +342,7 @@
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
         private DataGridView dgvFornecedor;
-        private Button button1;
+        private Button btnAtualizar;
         private Button btn_Salvar;
         private Button btn_Excluir;
         private DataGridViewTextBoxColumn Nome;
