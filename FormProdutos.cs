@@ -1,13 +1,16 @@
-﻿using sysestoque_alpha.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using sysestoque_alpha.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZstdSharp.Unsafe;
 
 namespace sysestoque_alpha
 {
@@ -18,6 +21,8 @@ namespace sysestoque_alpha
         Produto produto = new Produto();
 
         BindingSource BindingSourceProduto = new BindingSource();
+
+        bool EstaAtualizando = false;
 
         public FormProdutos()
         {
@@ -50,8 +55,6 @@ namespace sysestoque_alpha
                 BindingSourceProduto.DataSource = ListaProduto;
                 teladedadosprod.DataSource = BindingSourceProduto;
 
-
-
             }
         }
 
@@ -60,30 +63,55 @@ namespace sysestoque_alpha
 
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            produto.Id = null;
-            produto.Nome = tbxNome.Text;
-            produto.UnidadeMedidaId = 1; //Valor provisódio que deverá vir de um combobox
-            produto.CategoriaId = 1; //Valor provisódio que deverá vir de um combobox
-            produto.EstoqueMax = float.Parse(txbmax.Text);
-            produto.EstoqueMin = float.Parse(txbmin.Text);
-            produto.Estoque = 0;
+        private void btnSalvar_Click(object sender, EventArgs e){
 
-            using (var db = new EstoqueContext())
+            try
             {
-                db.Produto.Add(produto);
-                db.SaveChanges();
 
-                ListaProduto = db.Produto.ToList();
+                if (EstaAtualizando)
+                {
+            
+                    produto.Id = null;
+                    produto.Nome = tbxNome.Text;
+                    produto.UnidadeMedidaId = 1; //Valor provisódio que deverá vir de um combobox
+                    produto.CategoriaId = 1; //Valor provisódio que deverá vir de um combobox
+                    produto.EstoqueMax = float.Parse(txbmax.Text);
+                    produto.EstoqueMin = float.Parse(txbmin.Text);
+                    produto.Estoque = 0;
 
-                BindingSourceProduto.DataSource = ListaProduto;
+                    using (var db = new EstoqueContext())
+                    {
+                        db.Produto.Add(produto);
+                        db.SaveChanges();
 
+                        ListaProduto = db.Produto.ToList();
+
+                        BindingSourceProduto.DataSource = ListaProduto;
+                        teladedadosprod.DataSource = BindingSourceProduto;
+                        teladedadosprod.Refresh();
+                    }
+                }
+
+            }catch (DbUpdateException erro){
+
+                MessageBox.Show(" Já existe um Id '(produto.Id)' cadastrado no banco de dados",
+                                  "Error",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Error
+                                   );
+
+            }catch(Exception erro) {
+               MessageBox.Show(
+                         erro.Message,
+                         "Error",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error 
+                         );
             }
+
         }
 
-        private void btnExluir_Click(object sender, EventArgs e)
-        {
+        private void btnExluir_Click(object sender, EventArgs e){
 
             if (teladedadosprod.SelectedRows.Count > 0)
             {

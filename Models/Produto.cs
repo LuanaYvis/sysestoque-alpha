@@ -10,9 +10,9 @@ namespace sysestoque_alpha.Models
 {
     public class Produto {
         [Key]
-
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Id { get; set; }
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
         public float Estoque { get; set; }
         public float? EstoqueMax { get; set; }
         public float? EstoqueMedio { get; set; }
@@ -25,23 +25,21 @@ namespace sysestoque_alpha.Models
 
         [ForeignKey(nameof(UnidadeMedida))]
         public int UnidadeMedidaId { get; set; }
-        public UnidadeMedida? UnidadeMedia { get; set; }
+        public UnidadeMedida? UnidadeMedida { get; set; }
 
         
    
         //notas de entrada
 
-        public ICollection<ItemEntrada>? ItensEntrada { get; set; } = new List<ItemEntrada>();
+        public ICollection<ItemEntrada>? ItensEntrada { get; set; }
 
-        public ICollection<NotaEntrada>? NotasEntrada { get; set; } = new List<NotaEntrada>();
+        public ICollection<NotaEntrada>? NotasEntrada { get; set; }
 
-        public ICollection<NotaSaida>? NotaSaida { get; set; } = new List<NotaSaida>();
+        public ICollection<NotaSaida>? NotaSaida { get; set; }
 
-        public ICollection<ItemSaida>? ItensSaida { get; set; } = new List<ItemSaida>();
+        public ICollection<ItemSaida>? ItensSaida { get; set; }
 
-        public ICollection<Fornecedor>? Fornecedor { get; set; }= new List<Fornecedor>();
-
-        public ICollection<UnidadeMedida>? UnidadesMedia { get; set; } = new List<UnidadeMedida>();
+        public ICollection<Fornecedor>? Fornecedor { get; set; }
 
     }
 }
