@@ -60,6 +60,7 @@
             // 
             groupBox1.Controls.Add(cbxUM);
             groupBox1.Controls.Add(tbxNome);
+            groupBox1.Controls.Add(btnSalvar);
             groupBox1.Controls.Add(mintext);
             groupBox1.Controls.Add(maxtext);
             groupBox1.Controls.Add(txbmin);
@@ -239,7 +240,7 @@
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalvar.BackColor = Color.Transparent;
-            btnSalvar.Location = new Point(503, 415);
+            btnSalvar.Location = new Point(634, 167);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 23);
             btnSalvar.TabIndex = 2;
@@ -275,7 +276,6 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnAtualizar);
             Controls.Add(btnExluir);
-            Controls.Add(btnSalvar);
             Controls.Add(teladedadosprod);
             Controls.Add(groupBox1);
             Name = "FormProdutos";

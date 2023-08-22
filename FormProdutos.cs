@@ -88,12 +88,27 @@ namespace sysestoque_alpha
             if (teladedadosprod.SelectedRows.Count > 0)
             {
 
+                var result = MessageBox.Show(" Você deseja mesmo excluir permanentemente essa infromação ? ",
+                                                    "Excluir",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+
+                    // Execute a lógica  de acordo com a resposta
+                }
+
                 produto = teladedadosprod.SelectedRows[0].DataBoundItem as Produto;
+
+                //Remove a categoriado datagridview
 
                 BindingSourceProduto.Remove(produto);
 
+                // Remove da Banco de Dados
                 using (var db = new EstoqueContext())
                 {
+
                     db.Produto.Remove(produto);
                     db.SaveChanges();
 
