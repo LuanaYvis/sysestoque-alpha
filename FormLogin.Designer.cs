@@ -33,13 +33,14 @@
             btnLogar = new Button();
             lbSenha = new Label();
             lbLogin = new Label();
-            txbLogin = new TextBox();
             txbSenha = new TextBox();
+            txbLogin1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.BackColor = SystemColors.ActiveCaption;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Image = Properties.Resources.Logotipo_Moderno_Tecnologia_e_Gaming_Roxo_removebg_preview;
@@ -78,24 +79,24 @@
             lbLogin.TabIndex = 1;
             lbLogin.Text = "Login";
             // 
-            // txbLogin
-            // 
-            txbLogin.BackColor = SystemColors.GradientActiveCaption;
-            txbLogin.ForeColor = SystemColors.InactiveCaptionText;
-            txbLogin.Location = new Point(302, 320);
-            txbLogin.Name = "txbLogin";
-            txbLogin.Size = new Size(159, 23);
-            txbLogin.TabIndex = 2;
-            txbLogin.TextChanged += textBox1_TextChanged;
-            // 
             // txbSenha
             // 
             txbSenha.BackColor = SystemColors.GradientActiveCaption;
-            txbSenha.Location = new Point(302, 255);
+            txbSenha.ForeColor = SystemColors.InactiveCaptionText;
+            txbSenha.Location = new Point(302, 320);
             txbSenha.Name = "txbSenha";
             txbSenha.Size = new Size(159, 23);
             txbSenha.TabIndex = 2;
             txbSenha.TextChanged += textBox1_TextChanged;
+            // 
+            // txbLogin1
+            // 
+            txbLogin1.BackColor = SystemColors.GradientActiveCaption;
+            txbLogin1.Location = new Point(302, 255);
+            txbLogin1.Name = "txbLogin1";
+            txbLogin1.Size = new Size(159, 23);
+            txbLogin1.TabIndex = 2;
+            txbLogin1.TextChanged += textBox1_TextChanged;
             // 
             // FormLogin
             // 
@@ -105,14 +106,16 @@
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(800, 450);
             Controls.Add(btnLogar);
-            Controls.Add(txbSenha);
+            Controls.Add(txbLogin1);
             Controls.Add(lbSenha);
             Controls.Add(lbLogin);
-            Controls.Add(txbLogin);
+            Controls.Add(txbSenha);
             Controls.Add(pictureBox1);
             DoubleBuffered = true;
             ForeColor = SystemColors.ActiveCaptionText;
+            MaximizeBox = false;
             Name = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = resources.GetString("$this.Text");
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -124,7 +127,7 @@
         private Button btnLogar;
         private Label lbSenha;
         private Label lbLogin;
-        private TextBox txbLogin;
         private TextBox txbSenha;
+        private TextBox txbLogin1;
     }
 }

@@ -19,7 +19,7 @@ namespace sysestoque_alpha
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
-            string Login = txbLogin.Text;
+            string Login = txbLogin1.Text;
             string Senha = txbSenha.Text;
 
             Usuario usuario = null;
@@ -40,15 +40,17 @@ namespace sysestoque_alpha
                     //Criptografando a senha inserida pelo usuário
                     //para comparar com a senha guardada no banco de de dados
                     byte[] hashValue = sha512.ComputeHash(Encoding.UTF8.GetBytes(Login));
-                    foreach (byte b in hashValue) {
+                    foreach (byte b in hashValue)
+                    {
                         sb.Append($"{b:x2}");
                     }
                 }
 
                 Senha = sb.ToString();
 
-                if (usuario.HashSenha == Senha){
-                    this.Hide();
+                if (usuario.HashSenha == Senha)
+                {
+                    //this.Hide();
 
                     /*
                      * Abre a tela principal, dando acesso ao todas as outras telas
@@ -72,7 +74,7 @@ namespace sysestoque_alpha
 
         private void btnSenha_Click_1(object sender, EventArgs e)
         {
-            txbSenha.UseSystemPasswordChar = !txbSenha.UseSystemPasswordChar;
+            txbLogin1.UseSystemPasswordChar = !txbLogin1.UseSystemPasswordChar;
         }
     }
 }

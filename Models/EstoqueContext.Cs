@@ -12,7 +12,7 @@ namespace sysestoque_alpha.Models
 
             OnConfiguring(DbContextOptionsBuilder options){
 
-                options.UseMySQL("Server=127.0.0.1;port=3306;database=estoque;uid=root;password=#Root2022");
+                options.UseMySQL("Server=192.168.30.68;port=3306;database=estoque_alfa;uid=root;password=#Root2022");
 
         }
     }
