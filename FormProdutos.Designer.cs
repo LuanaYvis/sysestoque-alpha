@@ -81,7 +81,7 @@
             // cbxUM
             // 
             cbxUM.FormattingEnabled = true;
-            cbxUM.Location = new Point(537, 157);
+            cbxUM.Location = new Point(523, 100);
             cbxUM.Name = "cbxUM";
             cbxUM.Size = new Size(156, 23);
             cbxUM.TabIndex = 15;
@@ -153,7 +153,7 @@
             // unidademedidatext
             // 
             unidademedidatext.AutoSize = true;
-            unidademedidatext.Location = new Point(421, 160);
+            unidademedidatext.Location = new Point(395, 103);
             unidademedidatext.Name = "unidademedidatext";
             unidademedidatext.Size = new Size(110, 15);
             unidademedidatext.TabIndex = 4;
@@ -237,8 +237,9 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalvar.BackColor = Color.Transparent;
-            btnSalvar.Location = new Point(500, 415);
+            btnSalvar.Location = new Point(503, 415);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 23);
             btnSalvar.TabIndex = 2;
