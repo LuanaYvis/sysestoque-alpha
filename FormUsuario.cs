@@ -1,10 +1,12 @@
-﻿using sysestoque_alpha.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using sysestoque_alpha.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,10 +15,14 @@ namespace sysestoque_alpha
 {
     public partial class FormUsuario : Form
     {
+
         ICollection<Usuario> ListaUsuario = new List<Usuario>();
         Usuario usuario = new Usuario();
+
         BindingSource bindingSourceUsuario = new BindingSource();
 
+
+        private bool EstaAtualizando = false;
         public FormUsuario()
         {
             InitializeComponent();
@@ -33,6 +39,16 @@ namespace sysestoque_alpha
         {
             if (dgvUsuario.SelectedRows.Count > 0)
             {
+
+                var result = MessageBox.Show("Você deseja mesmo excluir essas informações?",
+                                                "Excluir",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // Executa a lógica de acordo com a resposta
+                }
+
                 usuario = dgvUsuario.SelectedRows[0].DataBoundItem as Usuario;
 
                 //Remove a categoria do Datagridview
@@ -47,8 +63,8 @@ namespace sysestoque_alpha
             }
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
+        private void btnSalvar_Click(object sender, EventArgs e) {
+
             usuario.Login = txtLogin.Text;
             usuario.HashSenha = txtSenha.Text;
             usuario.Nome = txtNome.Text;
@@ -64,6 +80,22 @@ namespace sysestoque_alpha
                 bindingSourceUsuario.DataSource = ListaUsuario;
                 dgvUsuario.DataSource = bindingSourceUsuario;
                 dgvUsuario.Refresh();
+            }
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            if (dgvUsuario.SelectedRows.Count > 0)
+            {
+                usuario = dgvUsuario.SelectedRows[0].DataBoundItem as Usuario;
+
+                txtLogin.Text = usuario.Login.ToString();
+                txtSenha.Text = usuario.HashSenha;
+                txtNome.Text = usuario.Nome;
+                txtTelefone.Text = usuario.Telefone;
+                txtEmail.Text = usuario.Email;
+
+                EstaAtualizando = true;
             }
         }
     }
