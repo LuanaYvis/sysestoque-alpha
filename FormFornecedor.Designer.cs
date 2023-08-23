@@ -74,6 +74,7 @@
             // 
             // textnome
             // 
+            textnome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textnome.Location = new Point(97, 30);
             textnome.Name = "textnome";
             textnome.Size = new Size(244, 23);
@@ -156,6 +157,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(pictureBox5);
             groupBox1.Controls.Add(btn_Salvar);
             groupBox1.Controls.Add(pictureBox4);
@@ -237,6 +239,7 @@
             // dgvFornecedor
             // 
             dgvFornecedor.AccessibleName = "dgvFornecedor";
+            dgvFornecedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvFornecedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvFornecedor.BackgroundColor = Color.Snow;
             dgvFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -281,7 +284,7 @@
             // 
             // btnAtualizar
             // 
-            btnAtualizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAtualizar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAtualizar.Location = new Point(433, 416);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(75, 23);
@@ -292,6 +295,7 @@
             // 
             // btn_Excluir
             // 
+            btn_Excluir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_Excluir.Location = new Point(551, 416);
             btn_Excluir.Name = "btn_Excluir";
             btn_Excluir.Size = new Size(75, 23);
@@ -305,12 +309,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(663, 455);
+            ClientSize = new Size(663, 446);
             Controls.Add(btn_Excluir);
             Controls.Add(btnAtualizar);
             Controls.Add(dgvFornecedor);
             Controls.Add(groupBox1);
             Name = "FormFornecedor";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Fornecedor";
             Load += FormFornecedor_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

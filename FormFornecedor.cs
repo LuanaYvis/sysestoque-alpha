@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using sysestoque_alpha.Models;
 using System;
 using System.Collections.Generic;
@@ -67,9 +68,16 @@ namespace sysestoque_alpha
 
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
-
             if (dgvFornecedor.SelectedRows.Count > 0)
             {
+                var result = MessageBox.Show("Você deseja mesmo excluir essa informação",
+                                               "Excluir",
+                                               MessageBoxButtons.YesNo,
+                                               MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+
+                }
 
                 fornecedor = dgvFornecedor.SelectedRows[0].DataBoundItem as Fornecedor;
 
@@ -88,6 +96,10 @@ namespace sysestoque_alpha
 
         private void btn_Salvar_Click(object sender, EventArgs e)
         {
+
+            try
+            {
+
             if (EstaAtualizando)
             {
                 fornecedor.cnpj = textCNPJ.Text;
@@ -134,6 +146,20 @@ namespace sysestoque_alpha
                     dgvFornecedor.Refresh();
 
                 }
+            }
+            } catch(DbUpdateException erro) {
+                MessageBox.Show("Já existi um CNPJ '(fornecedor.cnpj)' cadastrado no banco de dados",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                                );
+            } catch(Exception erro) {
+                MessageBox.Show(
+                        erro.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
             }
         }
 
