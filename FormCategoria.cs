@@ -41,11 +41,18 @@ namespace sysestoque_alpha
 
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
+        private void btnExcluir_Click(object sender, EventArgs e) {
 
-            if (dgvCategoria.SelectedRows.Count > 0)
-            {
+            if (dgvCategoria.SelectedRows.Count > 0) {
+
+                var result = MessageBox.Show("Você deseja mesmo excluir essa informação",
+                                                "Excluir",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question );
+
+                if (result == DialogResult.Yes) {
+                    // Executa a Lógica de acordo com a resposta
+                }
 
                 categoria = dgvCategoria.SelectedRows[0].DataBoundItem as Categoria;
 
@@ -53,8 +60,7 @@ namespace sysestoque_alpha
                 bindingSourceCategoria.Remove(categoria);
 
                 //Remove do Banco de Dados
-                using (var db = new EstoqueContext())
-                {
+                using (var db = new EstoqueContext()) {
                     db.Categoria.Remove(categoria);
                     db.SaveChanges();
 
