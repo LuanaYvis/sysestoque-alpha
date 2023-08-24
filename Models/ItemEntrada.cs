@@ -15,13 +15,13 @@ namespace sysestoque_alpha.Models
         [ForeignKey(nameof(NotaEntrada))]
         public int NotaEntradaId { get; set; }
 
-        public NotaEntrada NotaEntrada { get; set; }
+        public NotaEntrada? NotaEntrada { get; set; }
 
         
         [ForeignKey(nameof(Produto))]
         public int ProdutoId { get; set; }
 
-        public Produto Produto { get; set; }
+        public Produto? Produto { get; set; }
  
         public float Quantidade { get; set; }
 

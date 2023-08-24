@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace sysestoque_alpha.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class v100 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,15 +34,15 @@ namespace sysestoque_alpha.Migrations
                 name: "Fornecedor",
                 columns: table => new
                 {
-                    Nome = table.Column<string>(type: "varchar(255)", nullable: false),
-                    cnpj = table.Column<string>(type: "longtext", nullable: true),
+                    cnpj = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Nome = table.Column<string>(type: "longtext", nullable: true),
                     endereco = table.Column<string>(type: "longtext", nullable: true),
                     email = table.Column<string>(type: "longtext", nullable: true),
                     fone = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fornecedor", x => x.Nome);
+                    table.PrimaryKey("PK_Fornecedor", x => x.cnpj);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -78,46 +78,13 @@ namespace sysestoque_alpha.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Produto",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "longtext", nullable: false),
-                    Estoque = table.Column<float>(type: "float", nullable: false),
-                    EstoqueMax = table.Column<float>(type: "float", nullable: false),
-                    EstoqueMedio = table.Column<float>(type: "float", nullable: false),
-                    EstoqueMin = table.Column<float>(type: "float", nullable: false),
-                    CategoriaId = table.Column<int>(type: "int", nullable: false),
-                    UnidadeMedida = table.Column<int>(type: "int", nullable: false),
-                    UnidadeMediaId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Produto", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Produto_Categoria_CategoriaId",
-                        column: x => x.CategoriaId,
-                        principalTable: "Categoria",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Produto_Categoria_UnidadeMediaId",
-                        column: x => x.UnidadeMediaId,
-                        principalTable: "Categoria",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "NotaEntrada",
                 columns: table => new
                 {
                     IdNotaEntrada = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     dataEntrada = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    FornecedorNome = table.Column<string>(type: "varchar(255)", nullable: true),
+                    Fornecedorcnpj = table.Column<string>(type: "varchar(255)", nullable: true),
                     ValorTotal = table.Column<float>(type: "float", nullable: false),
                     loginUsuarioResponsavel = table.Column<string>(type: "varchar(255)", nullable: false)
                 },
@@ -125,10 +92,10 @@ namespace sysestoque_alpha.Migrations
                 {
                     table.PrimaryKey("PK_NotaEntrada", x => x.IdNotaEntrada);
                     table.ForeignKey(
-                        name: "FK_NotaEntrada_Fornecedor_FornecedorNome",
-                        column: x => x.FornecedorNome,
+                        name: "FK_NotaEntrada_Fornecedor_Fornecedorcnpj",
+                        column: x => x.Fornecedorcnpj,
                         principalTable: "Fornecedor",
-                        principalColumn: "Nome");
+                        principalColumn: "cnpj");
                     table.ForeignKey(
                         name: "FK_NotaEntrada_Usuario_loginUsuarioResponsavel",
                         column: x => x.loginUsuarioResponsavel,
@@ -142,23 +109,37 @@ namespace sysestoque_alpha.Migrations
                 name: "FornecedorProduto",
                 columns: table => new
                 {
-                    FornecedorNome = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Fornecedorcnpj = table.Column<string>(type: "varchar(255)", nullable: false),
                     ProdutosId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FornecedorProduto", x => new { x.FornecedorNome, x.ProdutosId });
+                    table.PrimaryKey("PK_FornecedorProduto", x => new { x.Fornecedorcnpj, x.ProdutosId });
                     table.ForeignKey(
-                        name: "FK_FornecedorProduto_Fornecedor_FornecedorNome",
-                        column: x => x.FornecedorNome,
+                        name: "FK_FornecedorProduto_Fornecedor_Fornecedorcnpj",
+                        column: x => x.Fornecedorcnpj,
                         principalTable: "Fornecedor",
-                        principalColumn: "Nome",
+                        principalColumn: "cnpj",
                         onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ItemEntrada",
+                columns: table => new
+                {
+                    NotaEntradaId = table.Column<int>(type: "int", nullable: false),
+                    ProdutoId = table.Column<int>(type: "int", nullable: false),
+                    Quantidade = table.Column<float>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemEntrada", x => new { x.NotaEntradaId, x.ProdutoId });
                     table.ForeignKey(
-                        name: "FK_FornecedorProduto_Produto_ProdutosId",
-                        column: x => x.ProdutosId,
-                        principalTable: "Produto",
-                        principalColumn: "Id",
+                        name: "FK_ItemEntrada_NotaEntrada_NotaEntradaId",
+                        column: x => x.NotaEntradaId,
+                        principalTable: "NotaEntrada",
+                        principalColumn: "IdNotaEntrada",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -180,10 +161,30 @@ namespace sysestoque_alpha.Migrations
                         principalTable: "NotaSaida",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Produto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "longtext", nullable: false),
+                    Estoque = table.Column<float>(type: "float", nullable: false),
+                    EstoqueMax = table.Column<float>(type: "float", nullable: true),
+                    EstoqueMedio = table.Column<float>(type: "float", nullable: true),
+                    EstoqueMin = table.Column<float>(type: "float", nullable: true),
+                    CategoriaId = table.Column<int>(type: "int", nullable: false),
+                    UnidadeMedidaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produto", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItemSaida_Produto_ProdutoId",
-                        column: x => x.ProdutoId,
-                        principalTable: "Produto",
+                        name: "FK_Produto_Categoria_CategoriaId",
+                        column: x => x.CategoriaId,
+                        principalTable: "Categoria",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -210,32 +211,6 @@ namespace sysestoque_alpha.Migrations
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
-            migrationBuilder.CreateTable(
-                name: "ItemEntrada",
-                columns: table => new
-                {
-                    NotaEntradaId = table.Column<int>(type: "int", nullable: false),
-                    ProdutoId = table.Column<int>(type: "int", nullable: false),
-                    Quantidade = table.Column<float>(type: "float", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ItemEntrada", x => new { x.NotaEntradaId, x.ProdutoId });
-                    table.ForeignKey(
-                        name: "FK_ItemEntrada_NotaEntrada_NotaEntradaId",
-                        column: x => x.NotaEntradaId,
-                        principalTable: "NotaEntrada",
-                        principalColumn: "IdNotaEntrada",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ItemEntrada_Produto_ProdutoId",
-                        column: x => x.ProdutoId,
-                        principalTable: "Produto",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
             migrationBuilder.CreateIndex(
                 name: "IX_FornecedorProduto_ProdutosId",
                 table: "FornecedorProduto",
@@ -252,9 +227,9 @@ namespace sysestoque_alpha.Migrations
                 column: "ProdutoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_NotaEntrada_FornecedorNome",
+                name: "IX_NotaEntrada_Fornecedorcnpj",
                 table: "NotaEntrada",
-                column: "FornecedorNome");
+                column: "Fornecedorcnpj");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NotaEntrada_loginUsuarioResponsavel",
@@ -267,19 +242,55 @@ namespace sysestoque_alpha.Migrations
                 column: "CategoriaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produto_UnidadeMediaId",
+                name: "IX_Produto_UnidadeMedidaId",
                 table: "Produto",
-                column: "UnidadeMediaId");
+                column: "UnidadeMedidaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UnidadeMedida_ProdutoId",
                 table: "UnidadeMedida",
                 column: "ProdutoId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_FornecedorProduto_Produto_ProdutosId",
+                table: "FornecedorProduto",
+                column: "ProdutosId",
+                principalTable: "Produto",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_ItemEntrada_Produto_ProdutoId",
+                table: "ItemEntrada",
+                column: "ProdutoId",
+                principalTable: "Produto",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_ItemSaida_Produto_ProdutoId",
+                table: "ItemSaida",
+                column: "ProdutoId",
+                principalTable: "Produto",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Produto_UnidadeMedida_UnidadeMedidaId",
+                table: "Produto",
+                column: "UnidadeMedidaId",
+                principalTable: "UnidadeMedida",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_UnidadeMedida_Produto_ProdutoId",
+                table: "UnidadeMedida");
+
             migrationBuilder.DropTable(
                 name: "FornecedorProduto");
 
@@ -290,16 +301,10 @@ namespace sysestoque_alpha.Migrations
                 name: "ItemSaida");
 
             migrationBuilder.DropTable(
-                name: "UnidadeMedida");
-
-            migrationBuilder.DropTable(
                 name: "NotaEntrada");
 
             migrationBuilder.DropTable(
                 name: "NotaSaida");
-
-            migrationBuilder.DropTable(
-                name: "Produto");
 
             migrationBuilder.DropTable(
                 name: "Fornecedor");
@@ -308,7 +313,13 @@ namespace sysestoque_alpha.Migrations
                 name: "Usuario");
 
             migrationBuilder.DropTable(
+                name: "Produto");
+
+            migrationBuilder.DropTable(
                 name: "Categoria");
+
+            migrationBuilder.DropTable(
+                name: "UnidadeMedida");
         }
     }
 }

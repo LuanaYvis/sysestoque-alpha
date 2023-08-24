@@ -15,7 +15,7 @@ namespace sysestoque_alpha.Models
 
         [ForeignKey(nameof(Produto))]
         public int ProdutoId { get; set; }
-        public Produto produto { get; set; } = new Produto();
+        public Produto? produto { get; set; }
 
        
         [ForeignKey(nameof(NotaSaida))]

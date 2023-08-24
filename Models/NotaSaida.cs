@@ -13,7 +13,7 @@ namespace sysestoque_alpha.Models
 
         public int Id { get; set; }
         public float valorTotal { get; set; }
-        public DateTime dataSaida { get; set; } 
+        public DateTime dataSaida { get; set; } = DateTime.Now;
         
         public ICollection<ItemSaida>? ItensSaida { get; set; } = new List<ItemSaida>();
         public ICollection<Produto>? produtos { get; set; } = new List<Produto>();
