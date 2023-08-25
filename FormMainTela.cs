@@ -23,7 +23,7 @@ namespace sysestoque_alpha
         public FormMainTela()
         {
             InitializeComponent();
-
+            dgvsis.AutoGenerateColumns = false;
 
             using (var db = new EstoqueContext()){
 
