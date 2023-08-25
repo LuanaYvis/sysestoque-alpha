@@ -29,35 +29,35 @@
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
-            statusStrip1 = new StatusStrip();
             produtosToolStripMenuItem = new ToolStripMenuItem();
             adicionarNovoProdutoToolStripMenuItem = new ToolStripMenuItem();
             configurarCategoriaToolStripMenuItem = new ToolStripMenuItem();
             fornecedorToolStripMenuItem = new ToolStripMenuItem();
             adicionarFonToolStripMenuItem = new ToolStripMenuItem();
+            configurarFornercedorToolStripMenuItem = new ToolStripMenuItem();
             notaDeEntradaToolStripMenuItem = new ToolStripMenuItem();
+            adicionarNotaDeEntradaToolStripMenuItem = new ToolStripMenuItem();
+            configToolStripMenuItem = new ToolStripMenuItem();
             notaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
+            adicionarNotaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
+            configurarNotaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
             ajudaToolStripMenuItem = new ToolStripMenuItem();
+            statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusLabelMsgPrincipal = new ToolStripStatusLabel();
             dgvsis = new DataGridView();
-            label1 = new Label();
-            txtestmi = new TextBox();
-            label2 = new Label();
-            txtEstma = new TextBox();
-            label3 = new Label();
-            txtestme = new TextBox();
             Id = new DataGridViewTextBoxColumn();
             Categoria = new DataGridViewTextBoxColumn();
             EstoqueMax = new DataGridViewTextBoxColumn();
             Estoquemedio = new DataGridViewTextBoxColumn();
             EstoqueMin = new DataGridViewTextBoxColumn();
             UniMed = new DataGridViewTextBoxColumn();
-            adicionarNotaDeEntradaToolStripMenuItem = new ToolStripMenuItem();
-            adicionarNotaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
-            configurarFornercedorToolStripMenuItem = new ToolStripMenuItem();
-            configToolStripMenuItem = new ToolStripMenuItem();
-            configurarNotaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
+            txtestmi = new TextBox();
+            label2 = new Label();
+            txtEstma = new TextBox();
+            label3 = new Label();
+            txtestme = new TextBox();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvsis).BeginInit();
@@ -71,15 +71,6 @@
             menuStrip1.Size = new Size(800, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
-            // 
-            // statusStrip1
-            // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, statusLabelMsgPrincipal });
-            statusStrip1.Location = new Point(0, 428);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 22);
-            statusStrip1.TabIndex = 1;
-            statusStrip1.Text = "statusStrip1";
             // 
             // produtosToolStripMenuItem
             // 
@@ -114,12 +105,32 @@
             adicionarFonToolStripMenuItem.Text = "Adicionar Fornecedor";
             adicionarFonToolStripMenuItem.Click += adicionarFonToolStripMenuItem_Click;
             // 
+            // configurarFornercedorToolStripMenuItem
+            // 
+            configurarFornercedorToolStripMenuItem.Name = "configurarFornercedorToolStripMenuItem";
+            configurarFornercedorToolStripMenuItem.Size = new Size(198, 22);
+            configurarFornercedorToolStripMenuItem.Text = "Configurar Fornercedor";
+            // 
             // notaDeEntradaToolStripMenuItem
             // 
             notaDeEntradaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarNotaDeEntradaToolStripMenuItem, configToolStripMenuItem });
             notaDeEntradaToolStripMenuItem.Name = "notaDeEntradaToolStripMenuItem";
             notaDeEntradaToolStripMenuItem.Size = new Size(104, 20);
             notaDeEntradaToolStripMenuItem.Text = "Nota de Entrada";
+            // 
+            // adicionarNotaDeEntradaToolStripMenuItem
+            // 
+            adicionarNotaDeEntradaToolStripMenuItem.Name = "adicionarNotaDeEntradaToolStripMenuItem";
+            adicionarNotaDeEntradaToolStripMenuItem.Size = new Size(219, 22);
+            adicionarNotaDeEntradaToolStripMenuItem.Text = "Adicionar Nota de Entrada";
+            adicionarNotaDeEntradaToolStripMenuItem.Click += adicionarNotaDeEntradaToolStripMenuItem_Click;
+            // 
+            // configToolStripMenuItem
+            // 
+            configToolStripMenuItem.Name = "configToolStripMenuItem";
+            configToolStripMenuItem.Size = new Size(219, 22);
+            configToolStripMenuItem.Text = "Configurar Nota de Entrada";
+            configToolStripMenuItem.Click += configToolStripMenuItem_Click;
             // 
             // notaDeSaídaToolStripMenuItem
             // 
@@ -128,11 +139,32 @@
             notaDeSaídaToolStripMenuItem.Size = new Size(92, 20);
             notaDeSaídaToolStripMenuItem.Text = "Nota de Saída";
             // 
+            // adicionarNotaDeSaídaToolStripMenuItem
+            // 
+            adicionarNotaDeSaídaToolStripMenuItem.Name = "adicionarNotaDeSaídaToolStripMenuItem";
+            adicionarNotaDeSaídaToolStripMenuItem.Size = new Size(207, 22);
+            adicionarNotaDeSaídaToolStripMenuItem.Text = "Adicionar Nota de Saída";
+            // 
+            // configurarNotaDeSaídaToolStripMenuItem
+            // 
+            configurarNotaDeSaídaToolStripMenuItem.Name = "configurarNotaDeSaídaToolStripMenuItem";
+            configurarNotaDeSaídaToolStripMenuItem.Size = new Size(207, 22);
+            configurarNotaDeSaídaToolStripMenuItem.Text = "Configurar Nota de Saída";
+            // 
             // ajudaToolStripMenuItem
             // 
             ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
             ajudaToolStripMenuItem.Size = new Size(50, 20);
             ajudaToolStripMenuItem.Text = "Ajuda";
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, statusLabelMsgPrincipal });
+            statusStrip1.Location = new Point(0, 428);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.TabIndex = 1;
+            statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
@@ -158,6 +190,49 @@
             dgvsis.RowTemplate.Height = 25;
             dgvsis.Size = new Size(776, 240);
             dgvsis.TabIndex = 2;
+            dgvsis.CellContentClick += dgvsis_CellContentClick;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria.Nome";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
+            // EstoqueMax
+            // 
+            EstoqueMax.DataPropertyName = "EstoqueMax";
+            EstoqueMax.HeaderText = "Estoque Máximo";
+            EstoqueMax.Name = "EstoqueMax";
+            EstoqueMax.ReadOnly = true;
+            // 
+            // Estoquemedio
+            // 
+            Estoquemedio.DataPropertyName = "EstoqueMedio";
+            Estoquemedio.HeaderText = "Estoque de Médio";
+            Estoquemedio.Name = "Estoquemedio";
+            Estoquemedio.ReadOnly = true;
+            // 
+            // EstoqueMin
+            // 
+            EstoqueMin.DataPropertyName = "EstoqueMin";
+            EstoqueMin.HeaderText = "Estoque Mínimo";
+            EstoqueMin.Name = "EstoqueMin";
+            EstoqueMin.ReadOnly = true;
+            // 
+            // UniMed
+            // 
+            UniMed.DataPropertyName = "UnidadeMedida.Nome";
+            UniMed.HeaderText = "Unidade de Media";
+            UniMed.Name = "UniMed";
+            UniMed.ReadOnly = true;
             // 
             // label1
             // 
@@ -217,80 +292,6 @@
             txtestme.ReadOnly = true;
             txtestme.Size = new Size(142, 23);
             txtestme.TabIndex = 8;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            Categoria.DataPropertyName = "Categoria.Nome";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            Categoria.ReadOnly = true;
-            // 
-            // EstoqueMax
-            // 
-            EstoqueMax.DataPropertyName = "EstoqueMax";
-            EstoqueMax.HeaderText = "Estoque Máximo";
-            EstoqueMax.Name = "EstoqueMax";
-            EstoqueMax.ReadOnly = true;
-            // 
-            // Estoquemedio
-            // 
-            Estoquemedio.DataPropertyName = "EstoqueMedio";
-            Estoquemedio.HeaderText = "Estoque de Médio";
-            Estoquemedio.Name = "Estoquemedio";
-            Estoquemedio.ReadOnly = true;
-            // 
-            // EstoqueMin
-            // 
-            EstoqueMin.DataPropertyName = "EstoqueMin";
-            EstoqueMin.HeaderText = "Estoque Mínimo";
-            EstoqueMin.Name = "EstoqueMin";
-            EstoqueMin.ReadOnly = true;
-            // 
-            // UniMed
-            // 
-            UniMed.DataPropertyName = "UnidadeMedida.Nome";
-            UniMed.HeaderText = "Unidade de Media";
-            UniMed.Name = "UniMed";
-            UniMed.ReadOnly = true;
-            // 
-            // adicionarNotaDeEntradaToolStripMenuItem
-            // 
-            adicionarNotaDeEntradaToolStripMenuItem.Name = "adicionarNotaDeEntradaToolStripMenuItem";
-            adicionarNotaDeEntradaToolStripMenuItem.Size = new Size(219, 22);
-            adicionarNotaDeEntradaToolStripMenuItem.Text = "Adicionar Nota de Entrada";
-            adicionarNotaDeEntradaToolStripMenuItem.Click += adicionarNotaDeEntradaToolStripMenuItem_Click;
-            // 
-            // adicionarNotaDeSaídaToolStripMenuItem
-            // 
-            adicionarNotaDeSaídaToolStripMenuItem.Name = "adicionarNotaDeSaídaToolStripMenuItem";
-            adicionarNotaDeSaídaToolStripMenuItem.Size = new Size(207, 22);
-            adicionarNotaDeSaídaToolStripMenuItem.Text = "Adicionar Nota de Saída";
-            // 
-            // configurarFornercedorToolStripMenuItem
-            // 
-            configurarFornercedorToolStripMenuItem.Name = "configurarFornercedorToolStripMenuItem";
-            configurarFornercedorToolStripMenuItem.Size = new Size(198, 22);
-            configurarFornercedorToolStripMenuItem.Text = "Configurar Fornercedor";
-            // 
-            // configToolStripMenuItem
-            // 
-            configToolStripMenuItem.Name = "configToolStripMenuItem";
-            configToolStripMenuItem.Size = new Size(219, 22);
-            configToolStripMenuItem.Text = "Configurar Nota de Entrada";
-            configToolStripMenuItem.Click += configToolStripMenuItem_Click;
-            // 
-            // configurarNotaDeSaídaToolStripMenuItem
-            // 
-            configurarNotaDeSaídaToolStripMenuItem.Name = "configurarNotaDeSaídaToolStripMenuItem";
-            configurarNotaDeSaídaToolStripMenuItem.Size = new Size(207, 22);
-            configurarNotaDeSaídaToolStripMenuItem.Text = "Configurar Nota de Saída";
             // 
             // FormMainTela
             // 
