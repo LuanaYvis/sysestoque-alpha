@@ -1,4 +1,5 @@
-﻿using sysestoque_alpha.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using sysestoque_alpha.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +16,30 @@ namespace sysestoque_alpha
 
         ICollection<Produto> ListaProduto = new List<Produto>();
         
+        Produto produto = new Produto();
+
+        BindingSource BindingSourceProduto = new BindingSource();
+
         public FormMainTela()
         {
             InitializeComponent();
+
+
+            using (var db = new EstoqueContext()){
+
+                db.Produto.Add(produto);
+                db.SaveChanges();
+
+                ListaProduto = db.Produto
+                                .Include( p => produto .Categoria)
+                                .Include( p => produto.UnidadeMedida)
+                                .Include(p => produto.UnidadeMedida)
+                                 .ToList();
+
+                BindingSourceProduto.DataSource = ListaProduto;
+                dgvsis.DataSource = BindingSourceProduto;
+            
+            }
         }
 
         private void adicionarFonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,17 +64,6 @@ namespace sysestoque_alpha
 
         private void dgvsis_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (var db = new EstoqueContext()){
-
-                db.Produto.Add(produto);
-                db.SaveChanges();
-
-                ListaProduto = db.Produto.ToList();
-
-                BindingSourceProduto.DataSource = ListaProduto;
-                dgvsis.DataSource = BindingSourceProduto;
-                dgvsis.Refresh();
-            }
         }
     }
 }
