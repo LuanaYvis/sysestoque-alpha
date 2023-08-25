@@ -16,5 +16,25 @@ namespace sysestoque_alpha
         {
             InitializeComponent();
         }
+
+        private void adicionarFonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void configToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adicionarNotaDeEntradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
