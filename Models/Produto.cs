@@ -24,8 +24,8 @@ namespace sysestoque_alpha.Models
         public Categoria? Categoria { get; set; }
 
         [ForeignKey(nameof(UnidadeMedida))]
-        public int UnidadeMedida { get; set; }
-        public Categoria? UnidadeMedia { get; set; }
+        public int UnidadeMediaId { get; set; }
+        public UnidadeMedida? UnidadeMedida { get; set; }
 
         
    
@@ -40,8 +40,5 @@ namespace sysestoque_alpha.Models
         public ICollection<ItemSaida>? ItensSaida { get; set; } = new List<ItemSaida>();
 
         public ICollection<Fornecedor>? Fornecedor { get; set; }= new List<Fornecedor>();
-
-        public ICollection<UnidadeMedida>? UnidadesMedida { get; set; } = new List<UnidadeMedida>();
-
     }
 }

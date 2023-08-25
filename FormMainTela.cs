@@ -12,10 +12,11 @@ using System.Windows.Forms;
 
 namespace sysestoque_alpha
 {
-    public partial class FormMainTela : Form{
+    public partial class FormMainTela : Form
+    {
 
         ICollection<Produto> ListaProduto = new List<Produto>();
-        
+
         Produto produto = new Produto();
 
         BindingSource BindingSourceProduto = new BindingSource();
@@ -25,20 +26,18 @@ namespace sysestoque_alpha
             InitializeComponent();
             dgvsis.AutoGenerateColumns = false;
 
-            using (var db = new EstoqueContext()){
-
-                db.Produto.Add(produto);
-                db.SaveChanges();
+            using (var db = new EstoqueContext())
+            {
 
                 ListaProduto = db.Produto
-                                .Include( p => produto .Categoria)
-                                .Include( p => produto.UnidadeMedida)
-                                .Include(p => produto.UnidadeMedida)
-                                 .ToList();
+                                .Include(p => p.Categoria)
+                                .Include(p => p.UnidadeMedida)
+                                .Include(p => p.Fornecedor)
+                                .ToList();
 
                 BindingSourceProduto.DataSource = ListaProduto;
                 dgvsis.DataSource = BindingSourceProduto;
-            
+
             }
         }
 
@@ -64,6 +63,18 @@ namespace sysestoque_alpha
 
         private void dgvsis_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void dgvsis_Click(object sender, EventArgs e)
+        {
+            if (dgvsis.SelectedRows.Count > 0 ){
+                produto = dgvsis.SelectedRows[0].DataBoundItem as Produto;
+                 
+                txtestmi.Text = produto.EstoqueMin.ToString();
+                txtestme.Text = produto.EstoqueMedio.ToString();
+                txtEstma.Text = produto.EstoqueMax.ToString();  
+
+            }
         }
     }
 }

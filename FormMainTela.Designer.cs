@@ -37,10 +37,8 @@
             configurarFornercedorToolStripMenuItem = new ToolStripMenuItem();
             notaDeEntradaToolStripMenuItem = new ToolStripMenuItem();
             adicionarNotaDeEntradaToolStripMenuItem = new ToolStripMenuItem();
-            configToolStripMenuItem = new ToolStripMenuItem();
             notaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
             adicionarNotaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
-            configurarNotaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
             ajudaToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
@@ -58,6 +56,9 @@
             txtEstma = new TextBox();
             label3 = new Label();
             txtestme = new TextBox();
+            informaçãoToolStripMenuItem = new ToolStripMenuItem();
+            ajudaToolStripMenuItem1 = new ToolStripMenuItem();
+            configurarUnidadeDeMedidaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvsis).BeginInit();
@@ -74,7 +75,7 @@
             // 
             // produtosToolStripMenuItem
             // 
-            produtosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarNovoProdutoToolStripMenuItem, configurarCategoriaToolStripMenuItem });
+            produtosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarNovoProdutoToolStripMenuItem, configurarCategoriaToolStripMenuItem, configurarUnidadeDeMedidaToolStripMenuItem });
             produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
             produtosToolStripMenuItem.Size = new Size(67, 20);
             produtosToolStripMenuItem.Text = "Produtos";
@@ -113,7 +114,7 @@
             // 
             // notaDeEntradaToolStripMenuItem
             // 
-            notaDeEntradaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarNotaDeEntradaToolStripMenuItem, configToolStripMenuItem });
+            notaDeEntradaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarNotaDeEntradaToolStripMenuItem });
             notaDeEntradaToolStripMenuItem.Name = "notaDeEntradaToolStripMenuItem";
             notaDeEntradaToolStripMenuItem.Size = new Size(104, 20);
             notaDeEntradaToolStripMenuItem.Text = "Nota de Entrada";
@@ -125,16 +126,9 @@
             adicionarNotaDeEntradaToolStripMenuItem.Text = "Adicionar Nota de Entrada";
             adicionarNotaDeEntradaToolStripMenuItem.Click += adicionarNotaDeEntradaToolStripMenuItem_Click;
             // 
-            // configToolStripMenuItem
-            // 
-            configToolStripMenuItem.Name = "configToolStripMenuItem";
-            configToolStripMenuItem.Size = new Size(219, 22);
-            configToolStripMenuItem.Text = "Configurar Nota de Entrada";
-            configToolStripMenuItem.Click += configToolStripMenuItem_Click;
-            // 
             // notaDeSaídaToolStripMenuItem
             // 
-            notaDeSaídaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarNotaDeSaídaToolStripMenuItem, configurarNotaDeSaídaToolStripMenuItem });
+            notaDeSaídaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarNotaDeSaídaToolStripMenuItem });
             notaDeSaídaToolStripMenuItem.Name = "notaDeSaídaToolStripMenuItem";
             notaDeSaídaToolStripMenuItem.Size = new Size(92, 20);
             notaDeSaídaToolStripMenuItem.Text = "Nota de Saída";
@@ -145,14 +139,9 @@
             adicionarNotaDeSaídaToolStripMenuItem.Size = new Size(207, 22);
             adicionarNotaDeSaídaToolStripMenuItem.Text = "Adicionar Nota de Saída";
             // 
-            // configurarNotaDeSaídaToolStripMenuItem
-            // 
-            configurarNotaDeSaídaToolStripMenuItem.Name = "configurarNotaDeSaídaToolStripMenuItem";
-            configurarNotaDeSaídaToolStripMenuItem.Size = new Size(207, 22);
-            configurarNotaDeSaídaToolStripMenuItem.Text = "Configurar Nota de Saída";
-            // 
             // ajudaToolStripMenuItem
             // 
+            ajudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { informaçãoToolStripMenuItem, ajudaToolStripMenuItem1 });
             ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
             ajudaToolStripMenuItem.Size = new Size(50, 20);
             ajudaToolStripMenuItem.Text = "Ajuda";
@@ -181,16 +170,21 @@
             // 
             // dgvsis
             // 
+            dgvsis.AllowUserToAddRows = false;
+            dgvsis.AllowUserToDeleteRows = false;
+            dgvsis.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvsis.BackgroundColor = SystemColors.Window;
             dgvsis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvsis.Columns.AddRange(new DataGridViewColumn[] { Id, Categoria, EstoqueMax, Estoquemedio, EstoqueMin, UniMed });
             dgvsis.GridColor = SystemColors.Window;
             dgvsis.Location = new Point(12, 39);
             dgvsis.Name = "dgvsis";
+            dgvsis.ReadOnly = true;
             dgvsis.RowTemplate.Height = 25;
             dgvsis.Size = new Size(776, 240);
             dgvsis.TabIndex = 2;
             dgvsis.CellContentClick += dgvsis_CellContentClick;
+            dgvsis.Click += dgvsis_Click;
             // 
             // Id
             // 
@@ -250,7 +244,6 @@
             txtestmi.ForeColor = SystemColors.Window;
             txtestmi.Location = new Point(131, 305);
             txtestmi.Name = "txtestmi";
-            txtestmi.ReadOnly = true;
             txtestmi.Size = new Size(142, 23);
             txtestmi.TabIndex = 4;
             // 
@@ -269,7 +262,6 @@
             txtEstma.Enabled = false;
             txtEstma.Location = new Point(414, 305);
             txtEstma.Name = "txtEstma";
-            txtEstma.ReadOnly = true;
             txtEstma.Size = new Size(142, 23);
             txtEstma.TabIndex = 6;
             // 
@@ -289,9 +281,26 @@
             txtestme.ForeColor = SystemColors.Window;
             txtestme.Location = new Point(131, 374);
             txtestme.Name = "txtestme";
-            txtestme.ReadOnly = true;
             txtestme.Size = new Size(142, 23);
             txtestme.TabIndex = 8;
+            // 
+            // informaçãoToolStripMenuItem
+            // 
+            informaçãoToolStripMenuItem.Name = "informaçãoToolStripMenuItem";
+            informaçãoToolStripMenuItem.Size = new Size(180, 22);
+            informaçãoToolStripMenuItem.Text = "Informação";
+            // 
+            // ajudaToolStripMenuItem1
+            // 
+            ajudaToolStripMenuItem1.Name = "ajudaToolStripMenuItem1";
+            ajudaToolStripMenuItem1.Size = new Size(180, 22);
+            ajudaToolStripMenuItem1.Text = "Ajuda";
+            // 
+            // configurarUnidadeDeMedidaToolStripMenuItem
+            // 
+            configurarUnidadeDeMedidaToolStripMenuItem.Name = "configurarUnidadeDeMedidaToolStripMenuItem";
+            configurarUnidadeDeMedidaToolStripMenuItem.Size = new Size(237, 22);
+            configurarUnidadeDeMedidaToolStripMenuItem.Text = "Configurar Unidade de Medida";
             // 
             // FormMainTela
             // 
@@ -349,7 +358,8 @@
         private ToolStripMenuItem configurarFornercedorToolStripMenuItem;
         private ToolStripMenuItem adicionarNotaDeEntradaToolStripMenuItem;
         private ToolStripMenuItem adicionarNotaDeSaídaToolStripMenuItem;
-        private ToolStripMenuItem configToolStripMenuItem;
-        private ToolStripMenuItem configurarNotaDeSaídaToolStripMenuItem;
+        private ToolStripMenuItem informaçãoToolStripMenuItem;
+        private ToolStripMenuItem ajudaToolStripMenuItem1;
+        private ToolStripMenuItem configurarUnidadeDeMedidaToolStripMenuItem;
     }
 }
