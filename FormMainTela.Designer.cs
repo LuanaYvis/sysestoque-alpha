@@ -32,6 +32,7 @@
             produtosToolStripMenuItem = new ToolStripMenuItem();
             adicionarNovoProdutoToolStripMenuItem = new ToolStripMenuItem();
             configurarCategoriaToolStripMenuItem = new ToolStripMenuItem();
+            configurarUnidadeDeMedidaToolStripMenuItem = new ToolStripMenuItem();
             fornecedorToolStripMenuItem = new ToolStripMenuItem();
             adicionarFonToolStripMenuItem = new ToolStripMenuItem();
             configurarFornercedorToolStripMenuItem = new ToolStripMenuItem();
@@ -40,6 +41,8 @@
             notaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
             adicionarNotaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
             ajudaToolStripMenuItem = new ToolStripMenuItem();
+            informaçãoToolStripMenuItem = new ToolStripMenuItem();
+            ajudaToolStripMenuItem1 = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusLabelMsgPrincipal = new ToolStripStatusLabel();
@@ -56,9 +59,6 @@
             txtEstma = new TextBox();
             label3 = new Label();
             txtestme = new TextBox();
-            informaçãoToolStripMenuItem = new ToolStripMenuItem();
-            ajudaToolStripMenuItem1 = new ToolStripMenuItem();
-            configurarUnidadeDeMedidaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvsis).BeginInit();
@@ -83,14 +83,20 @@
             // adicionarNovoProdutoToolStripMenuItem
             // 
             adicionarNovoProdutoToolStripMenuItem.Name = "adicionarNovoProdutoToolStripMenuItem";
-            adicionarNovoProdutoToolStripMenuItem.Size = new Size(203, 22);
+            adicionarNovoProdutoToolStripMenuItem.Size = new Size(237, 22);
             adicionarNovoProdutoToolStripMenuItem.Text = "Adicionar Novo Produto";
             // 
             // configurarCategoriaToolStripMenuItem
             // 
             configurarCategoriaToolStripMenuItem.Name = "configurarCategoriaToolStripMenuItem";
-            configurarCategoriaToolStripMenuItem.Size = new Size(203, 22);
+            configurarCategoriaToolStripMenuItem.Size = new Size(237, 22);
             configurarCategoriaToolStripMenuItem.Text = "Configurar Categoria";
+            // 
+            // configurarUnidadeDeMedidaToolStripMenuItem
+            // 
+            configurarUnidadeDeMedidaToolStripMenuItem.Name = "configurarUnidadeDeMedidaToolStripMenuItem";
+            configurarUnidadeDeMedidaToolStripMenuItem.Size = new Size(237, 22);
+            configurarUnidadeDeMedidaToolStripMenuItem.Text = "Configurar Unidade de Medida";
             // 
             // fornecedorToolStripMenuItem
             // 
@@ -122,7 +128,7 @@
             // adicionarNotaDeEntradaToolStripMenuItem
             // 
             adicionarNotaDeEntradaToolStripMenuItem.Name = "adicionarNotaDeEntradaToolStripMenuItem";
-            adicionarNotaDeEntradaToolStripMenuItem.Size = new Size(219, 22);
+            adicionarNotaDeEntradaToolStripMenuItem.Size = new Size(213, 22);
             adicionarNotaDeEntradaToolStripMenuItem.Text = "Adicionar Nota de Entrada";
             adicionarNotaDeEntradaToolStripMenuItem.Click += adicionarNotaDeEntradaToolStripMenuItem_Click;
             // 
@@ -136,7 +142,7 @@
             // adicionarNotaDeSaídaToolStripMenuItem
             // 
             adicionarNotaDeSaídaToolStripMenuItem.Name = "adicionarNotaDeSaídaToolStripMenuItem";
-            adicionarNotaDeSaídaToolStripMenuItem.Size = new Size(207, 22);
+            adicionarNotaDeSaídaToolStripMenuItem.Size = new Size(201, 22);
             adicionarNotaDeSaídaToolStripMenuItem.Text = "Adicionar Nota de Saída";
             // 
             // ajudaToolStripMenuItem
@@ -145,6 +151,18 @@
             ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
             ajudaToolStripMenuItem.Size = new Size(50, 20);
             ajudaToolStripMenuItem.Text = "Ajuda";
+            // 
+            // informaçãoToolStripMenuItem
+            // 
+            informaçãoToolStripMenuItem.Name = "informaçãoToolStripMenuItem";
+            informaçãoToolStripMenuItem.Size = new Size(135, 22);
+            informaçãoToolStripMenuItem.Text = "Informação";
+            // 
+            // ajudaToolStripMenuItem1
+            // 
+            ajudaToolStripMenuItem1.Name = "ajudaToolStripMenuItem1";
+            ajudaToolStripMenuItem1.Size = new Size(135, 22);
+            ajudaToolStripMenuItem1.Text = "Ajuda";
             // 
             // statusStrip1
             // 
@@ -184,6 +202,8 @@
             dgvsis.Size = new Size(776, 240);
             dgvsis.TabIndex = 2;
             dgvsis.CellContentClick += dgvsis_CellContentClick;
+            dgvsis.CellFormatting += dgvsis_CellFormatting;
+            dgvsis.SelectionChanged += dgvsis_SelectionChanged;
             dgvsis.Click += dgvsis_Click;
             // 
             // Id
@@ -283,24 +303,6 @@
             txtestme.Name = "txtestme";
             txtestme.Size = new Size(142, 23);
             txtestme.TabIndex = 8;
-            // 
-            // informaçãoToolStripMenuItem
-            // 
-            informaçãoToolStripMenuItem.Name = "informaçãoToolStripMenuItem";
-            informaçãoToolStripMenuItem.Size = new Size(180, 22);
-            informaçãoToolStripMenuItem.Text = "Informação";
-            // 
-            // ajudaToolStripMenuItem1
-            // 
-            ajudaToolStripMenuItem1.Name = "ajudaToolStripMenuItem1";
-            ajudaToolStripMenuItem1.Size = new Size(180, 22);
-            ajudaToolStripMenuItem1.Text = "Ajuda";
-            // 
-            // configurarUnidadeDeMedidaToolStripMenuItem
-            // 
-            configurarUnidadeDeMedidaToolStripMenuItem.Name = "configurarUnidadeDeMedidaToolStripMenuItem";
-            configurarUnidadeDeMedidaToolStripMenuItem.Size = new Size(237, 22);
-            configurarUnidadeDeMedidaToolStripMenuItem.Text = "Configurar Unidade de Medida";
             // 
             // FormMainTela
             // 
