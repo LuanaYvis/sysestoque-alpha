@@ -32,16 +32,16 @@
             btnExcluir = new Button();
             btnSalvar = new Button();
             dgvCategoria = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Nome = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
             lblID = new Label();
             lblNome = new Label();
             lblDescricao = new Label();
             gpbDadosCategoria = new GroupBox();
             txtID = new TextBox();
             txtDescricao = new TextBox();
-            txtNome = new TextBox();
+            txtNomeCategoria = new TextBox();
+            ID = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             gpbDadosCategoria.SuspendLayout();
             SuspendLayout();
@@ -94,24 +94,6 @@
             dgvCategoria.Size = new Size(776, 174);
             dgvCategoria.TabIndex = 3;
             // 
-            // ID
-            // 
-            ID.DataPropertyName = "Id";
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            // 
-            // Nome
-            // 
-            Nome.DataPropertyName = "Nome";
-            Nome.HeaderText = "Nome";
-            Nome.Name = "Nome";
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "Descricao";
-            Column1.HeaderText = "Descrição";
-            Column1.Name = "Column1";
-            // 
             // lblID
             // 
             lblID.AutoSize = true;
@@ -126,9 +108,9 @@
             lblNome.AutoSize = true;
             lblNome.Location = new Point(22, 84);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(40, 15);
+            lblNome.Size = new Size(58, 15);
             lblNome.TabIndex = 6;
-            lblNome.Text = "Nome";
+            lblNome.Text = "Categoria";
             // 
             // lblDescricao
             // 
@@ -143,7 +125,7 @@
             // 
             gpbDadosCategoria.Controls.Add(txtID);
             gpbDadosCategoria.Controls.Add(txtDescricao);
-            gpbDadosCategoria.Controls.Add(txtNome);
+            gpbDadosCategoria.Controls.Add(txtNomeCategoria);
             gpbDadosCategoria.Controls.Add(lblDescricao);
             gpbDadosCategoria.Controls.Add(lblNome);
             gpbDadosCategoria.Controls.Add(lblID);
@@ -165,15 +147,33 @@
             // 
             txtDescricao.Location = new Point(81, 141);
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(145, 23);
+            txtDescricao.Size = new Size(282, 23);
             txtDescricao.TabIndex = 0;
             // 
-            // txtNome
+            // txtNomeCategoria
             // 
-            txtNome.Location = new Point(81, 81);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(282, 23);
-            txtNome.TabIndex = 0;
+            txtNomeCategoria.Location = new Point(81, 81);
+            txtNomeCategoria.Name = "txtNomeCategoria";
+            txtNomeCategoria.Size = new Size(282, 23);
+            txtNomeCategoria.TabIndex = 0;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "Id";
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            // 
+            // Nome
+            // 
+            Nome.DataPropertyName = "Nome";
+            Nome.HeaderText = "Categoria";
+            Nome.Name = "Nome";
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "Descricao";
+            Column1.HeaderText = "Descrição";
+            Column1.Name = "Column1";
             // 
             // FormCategoria
             // 
@@ -207,10 +207,10 @@
         private Label lblDescricao;
         private GroupBox gpbDadosCategoria;
         private TextBox txtDescricao;
-        private TextBox txtNome;
+        private TextBox txtNomeCategoria;
+        private TextBox txtID;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Column1;
-        private TextBox txtID;
     }
 }
