@@ -123,7 +123,7 @@
             // 
             // textfone
             // 
-            textfone.Location = new Point(84, 159);
+            textfone.Location = new Point(84, 158);
             textfone.Name = "textfone";
             textfone.Size = new Size(152, 23);
             textfone.TabIndex = 8;

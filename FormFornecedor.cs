@@ -100,60 +100,64 @@ namespace sysestoque_alpha
             try
             {
 
-            if (EstaAtualizando)
-            {
-                fornecedor.cnpj = textCNPJ.Text;
-                fornecedor.Nome = textnome.Text;
-                fornecedor.endereco = textendereco.Text;
-                fornecedor.fone = textfone.Text;
-                fornecedor.email = textemail.Text;
-
-                using (var db = new EstoqueContext())
+                if (EstaAtualizando)
                 {
-                    db.Fornecedor.Update(fornecedor);
-                    db.SaveChanges();
+                    fornecedor.cnpj = textCNPJ.Text;
+                    fornecedor.Nome = textnome.Text;
+                    fornecedor.endereco = textendereco.Text;
+                    fornecedor.fone = textfone.Text;
+                    fornecedor.email = textemail.Text;
 
-                    listaFornecedores = db.Fornecedor.ToList();
-                    BindingSourceFornecedor.DataSource = listaFornecedores;
+                    using (var db = new EstoqueContext())
+                    {
+                        db.Fornecedor.Update(fornecedor);
+                        db.SaveChanges();
 
-                    dgvFornecedor.DataSource = BindingSourceFornecedor;
+                        listaFornecedores = db.Fornecedor.ToList();
+                        BindingSourceFornecedor.DataSource = listaFornecedores;
 
-                    dgvFornecedor.Refresh();
+                        dgvFornecedor.DataSource = BindingSourceFornecedor;
+
+                        dgvFornecedor.Refresh();
+
+                    }
+
 
                 }
-
-
-            }
-            else
-            {
-                fornecedor.cnpj = textCNPJ.Text;
-                fornecedor.Nome = textnome.Text;
-                fornecedor.endereco = textendereco.Text;
-                fornecedor.fone = textfone.Text;
-                fornecedor.email = textemail.Text;
-
-                using (var db = new EstoqueContext())
+                else
                 {
+                    fornecedor.cnpj = textCNPJ.Text;
+                    fornecedor.Nome = textnome.Text;
+                    fornecedor.endereco = textendereco.Text;
+                    fornecedor.fone = textfone.Text;
+                    fornecedor.email = textemail.Text;
 
-                    db.Fornecedor.Add(fornecedor);
-                    db.SaveChanges();
+                    using (var db = new EstoqueContext())
+                    {
 
-                    listaFornecedores = db.Fornecedor.ToList();
-                    BindingSourceFornecedor.DataSource = listaFornecedores;
+                        db.Fornecedor.Add(fornecedor);
+                        db.SaveChanges();
 
-                    dgvFornecedor.DataSource = BindingSourceFornecedor;
+                        listaFornecedores = db.Fornecedor.ToList();
+                        BindingSourceFornecedor.DataSource = listaFornecedores;
 
-                    dgvFornecedor.Refresh();
+                        dgvFornecedor.DataSource = BindingSourceFornecedor;
 
+                        dgvFornecedor.Refresh();
+
+                    }
                 }
             }
-            } catch(DbUpdateException erro) {
+            catch (DbUpdateException erro)
+            {
                 MessageBox.Show("Já existi um CNPJ '(fornecedor.cnpj)' cadastrado no banco de dados",
                                 "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error
                                 );
-            } catch(Exception erro) {
+            }
+            catch (Exception erro)
+            {
                 MessageBox.Show(
                         erro.Message,
                         "Error",
