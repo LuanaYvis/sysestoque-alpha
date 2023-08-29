@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
+using Refit;
+using SysEstoque.CallAPI.Interface;
 using sysestoque_alpha.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
@@ -179,6 +182,67 @@ namespace sysestoque_alpha
             textemail.Text = fornecedor.email;
 
             EstaAtualizando = true;
+        }
+
+        private void btnConsultarCNPJ_Click(object sender, EventArgs e)
+        {
+            string cnpj = textCNPJ.Text;
+
+            cnpj = cnpj.Trim();
+
+            try
+            {
+                this.buscarDadosCNPJ(cnpj);
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(
+                    "Erro ao consutlar os dados do CNPJ",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+            }
+        }
+
+        private async Task buscarDadosCNPJ(string cnpj)
+        {
+            try
+            {
+
+                var cnpjFornecedor = RestService.For<ICNPJReceitaWS>("https://receitaws.com.br/");
+
+                var cnpjData = await cnpjFornecedor.GetAddressAsync(cnpj);
+
+                MessageBox.Show(cnpjData.nome, "Nome");
+
+                if (cnpjData != null)
+                {
+                    textCNPJ.Text = cnpjData.cnpj;
+                    textnome.Text = cnpjData.nome;
+                    textendereco.Text = $"{cnpjData.logradouro}, nº {cnpjData.numero}, {cnpjData.bairro}. {cnpjData.municipio}/{cnpjData.uf}";
+                    textfone.Text = cnpjData.telefone;
+                    textemail.Text = cnpjData.email;
+                }
+                else
+                {
+                    Debug.WriteLine(cnpjData);
+
+                }
+
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+
+            }
+
+        }
+
+        private void textnome_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

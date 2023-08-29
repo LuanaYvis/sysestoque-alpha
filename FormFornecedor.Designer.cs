@@ -40,6 +40,7 @@
             label5 = new Label();
             pictureBox1 = new PictureBox();
             groupBox1 = new GroupBox();
+            btnConsultarCNPJ = new Button();
             pictureBox5 = new PictureBox();
             btn_Salvar = new Button();
             pictureBox4 = new PictureBox();
@@ -79,6 +80,7 @@
             textnome.Name = "textnome";
             textnome.Size = new Size(244, 23);
             textnome.TabIndex = 2;
+            textnome.TextChanged += textnome_TextChanged;
             // 
             // label2
             // 
@@ -158,6 +160,7 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(btnConsultarCNPJ);
             groupBox1.Controls.Add(pictureBox5);
             groupBox1.Controls.Add(btn_Salvar);
             groupBox1.Controls.Add(pictureBox4);
@@ -183,6 +186,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro de Fornecedor";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // btnConsultarCNPJ
+            // 
+            btnConsultarCNPJ.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnConsultarCNPJ.Location = new Point(266, 72);
+            btnConsultarCNPJ.Name = "btnConsultarCNPJ";
+            btnConsultarCNPJ.Size = new Size(75, 23);
+            btnConsultarCNPJ.TabIndex = 17;
+            btnConsultarCNPJ.Text = "Consultar";
+            btnConsultarCNPJ.UseVisualStyleBackColor = true;
+            btnConsultarCNPJ.Click += btnConsultarCNPJ_Click;
             // 
             // pictureBox5
             // 
@@ -239,6 +253,8 @@
             // dgvFornecedor
             // 
             dgvFornecedor.AccessibleName = "dgvFornecedor";
+            dgvFornecedor.AllowUserToAddRows = false;
+            dgvFornecedor.AllowUserToDeleteRows = false;
             dgvFornecedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvFornecedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvFornecedor.BackgroundColor = Color.Snow;
@@ -246,6 +262,7 @@
             dgvFornecedor.Columns.AddRange(new DataGridViewColumn[] { Nome, Email, Fone, Endereco, CNPJ });
             dgvFornecedor.Location = new Point(12, 269);
             dgvFornecedor.Name = "dgvFornecedor";
+            dgvFornecedor.ReadOnly = true;
             dgvFornecedor.RowTemplate.Height = 25;
             dgvFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFornecedor.Size = new Size(643, 141);
@@ -257,30 +274,35 @@
             Nome.DataPropertyName = "Nome";
             Nome.HeaderText = "Nome";
             Nome.Name = "Nome";
+            Nome.ReadOnly = true;
             // 
             // Email
             // 
             Email.DataPropertyName = "email";
             Email.HeaderText = "Email";
             Email.Name = "Email";
+            Email.ReadOnly = true;
             // 
             // Fone
             // 
             Fone.DataPropertyName = "fone";
             Fone.HeaderText = "Fone";
             Fone.Name = "Fone";
+            Fone.ReadOnly = true;
             // 
             // Endereco
             // 
             Endereco.DataPropertyName = "endereco";
             Endereco.HeaderText = "Endereço";
             Endereco.Name = "Endereco";
+            Endereco.ReadOnly = true;
             // 
             // CNPJ
             // 
             CNPJ.DataPropertyName = "cnpj";
             CNPJ.HeaderText = "CNPJ";
             CNPJ.Name = "CNPJ";
+            CNPJ.ReadOnly = true;
             // 
             // btnAtualizar
             // 
@@ -355,5 +377,6 @@
         private DataGridViewTextBoxColumn Fone;
         private DataGridViewTextBoxColumn Endereco;
         private DataGridViewTextBoxColumn CNPJ;
+        private Button btnConsultarCNPJ;
     }
 }
