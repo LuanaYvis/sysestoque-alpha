@@ -65,21 +65,64 @@ namespace sysestoque_alpha
 
         private void btnSalvar_Click(object sender, EventArgs e) {
 
-            usuario.Login = txtLogin.Text;
-            usuario.HashSenha = txtSenha.Text;
-            usuario.Nome = txtNome.Text;
-            usuario.Telefone = txtTelefone.Text;
-            usuario.Email = txtEmail.Text;
-
-            using (var db = new EstoqueContext())
+            try
             {
-                db.Usuario.Add(usuario);
-                db.SaveChanges();
+                if (EstaAtualizando)
+                {
 
-                ListaUsuario = db.Usuario.ToList();
-                bindingSourceUsuario.DataSource = ListaUsuario;
-                dgvUsuario.DataSource = bindingSourceUsuario;
-                dgvUsuario.Refresh();
+                    usuario.Login = txtLogin.Text;
+                    usuario.HashSenha = txtSenha.Text;
+                    usuario.Nome = txtNome.Text;
+                    usuario.Telefone = txtTelefone.Text;
+                    usuario.Email = txtEmail.Text;
+
+                    using (var db = new EstoqueContext())
+                    {
+                        db.Usuario.Add(usuario);
+                        db.SaveChanges();
+
+                        ListaUsuario = db.Usuario.ToList();
+                        bindingSourceUsuario.DataSource = ListaUsuario;
+                        dgvUsuario.DataSource = bindingSourceUsuario;
+                        dgvUsuario.Refresh();
+                    }
+                }
+                else
+                {
+                    usuario.Login = txtLogin.Text;
+                    usuario.HashSenha = txtSenha.Text;
+                    usuario.Nome = txtNome.Text;
+                    usuario.Telefone = txtTelefone.Text;
+                    usuario.Email = txtEmail.Text;
+
+                    using (var db = new EstoqueContext())
+                    {
+                        db.Usuario.Add(usuario);
+                        db.SaveChanges();
+
+                        ListaUsuario = db.Usuario.ToList();
+                        bindingSourceUsuario.DataSource = ListaUsuario;
+                        dgvUsuario.DataSource = bindingSourceUsuario;
+                        dgvUsuario.Refresh();
+                    }
+                }
+            }
+            catch (DbUpdateException erro)
+            {
+                MessageBox.Show("Já existi um CNPJ '(fornecedor.cnpj)' cadastrado no banco de dados",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                                );
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(
+                        erro.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
             }
         }
 
